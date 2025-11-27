@@ -1,6 +1,10 @@
 // app/page.tsx rewritten version placeholder
 // full code rewrite will be placed next turn after structure scaffold confirmation
 "use client";
+
+import { useState } from "react";
+// 既存の import はそのまま
+
 import React, { useMemo, useState, useEffect } from "react";
 import HeroSection from "@/components/sections/HeroSection";
 import BookSection from "@/components/sections/BookSection";
@@ -141,6 +145,10 @@ export default function Page() {
 	const coloringBooks = BOOKS.filter((b) => b.category === "coloring");
 	const photoBooks = BOOKS.filter((b) => b.category === "photo");
 
+	// コンポーネント内（Page 関数の中）で:
+	const [selectedCategory, setSelectedCategory] = useState<
+	"all" | "picture" | "coloring" | "photo"
+	>("all");
 	
 	useEffect(() => {
 			if (!lbOpen) return;
@@ -655,37 +663,105 @@ const gallerySources = [
 		{/* 全体の見出し */}
 		<H2>{t.book.lead}</H2>
 		
-		<div className="mt-6 space-y-10">
-		{/* 絵本セクション */}
-		{pictureBooks.length > 0 && (
-				<section>
-				<h3 className="text-lg font-semibold mb-3">
-				絵本 / Picture Books
+		{/* ▼ プレビュー表示か、カテゴリ専用表示かを切り替え */}
+		{selectedCategory === "all" ? (
+				<div className="mt-6 space-y-10">
+				{/* 絵本セクション（プレビュー：2冊だけ） */}
+				{pictureBooks.length > 0 && (
+						<section>
+						<div className="flex items-baseline justify-between gap-2 mb-3">
+						<h3 className="text-lg font-semibold">
+						絵本 / Picture Books
+						</h3>
+						<button
+						type="button"
+						onClick={() => setSelectedCategory("picture")}
+						className="text-xs text-neutral-600 underline underline-offset-4 hover:opacity-70"
+						>
+						このカテゴリをもっと見る
+						</button>
+						</div>
+						
+						<BooksSection books={pictureBooks.slice(0, 2)} />
+						</section>
+				)}
+				
+				{/* 塗り絵セクション（プレビュー：2冊だけ） */}
+				{coloringBooks.length > 0 && (
+						<section>
+						<div className="flex items-baseline justify-between gap-2 mb-3">
+						<h3 className="text-lg font-semibold">
+						塗り絵 / Coloring Books
+						</h3>
+						<button
+						type="button"
+						onClick={() => setSelectedCategory("coloring")}
+						className="text-xs text-neutral-600 underline underline-offset-4 hover:opacity-70"
+						>
+						このカテゴリをもっと見る
+						</button>
+						</div>
+						
+						<BooksSection books={coloringBooks.slice(0, 2)} />
+						</section>
+				)}
+				
+				{/* 写真集セクション（プレビュー：2冊だけ） */}
+				{photoBooks.length > 0 && (
+						<section>
+						<div className="flex items-baseline justify-between gap-2 mb-3">
+						<h3 className="text-lg font-semibold">
+						写真集 / Photo Books
+						</h3>
+						<button
+						type="button"
+						onClick={() => setSelectedCategory("photo")}
+						className="text-xs text-neutral-600 underline underline-offset-4 hover:opacity-70"
+						>
+						このカテゴリをもっと見る
+						</button>
+						</div>
+						
+						<BooksSection books={photoBooks.slice(0, 2)} />
+						</section>
+				)}
+				</div>
+			) : (
+				/* ▼ どれかのカテゴリが選ばれているとき：そのカテゴリだけ全件表示 */
+				<div className="mt-6 space-y-4">
+				<div className="flex items-center justify-between gap-2">
+				<div>
+				<h3 className="text-lg font-semibold">
+				{selectedCategory === "picture" && "絵本 / Picture Books"}
+				{selectedCategory === "coloring" && "塗り絵 / Coloring Books"}
+				{selectedCategory === "photo" && "写真集 / Photo Books"}
 				</h3>
-				<BooksSection books={pictureBooks} />
-				</section>
+				<p className="mt-1 text-xs text-neutral-500">
+				カテゴリー内の本を一覧表示しています。
+				</p>
+				</div>
+				
+				<button
+				type="button"
+				onClick={() => setSelectedCategory("all")}
+				className="text-xs text-neutral-600 underline underline-offset-4 hover:opacity-70"
+				>
+				すべてのカテゴリーに戻る
+				</button>
+				</div>
+				
+				{/* 選択されたカテゴリの本をまとめて表示 */}
+				{selectedCategory === "picture" && (
+						<BooksSection books={pictureBooks} />
+				)}
+				{selectedCategory === "coloring" && (
+						<BooksSection books={coloringBooks} />
+				)}
+				{selectedCategory === "photo" && (
+						<BooksSection books={photoBooks} />
+				)}
+				</div>
 		)}
-		
-		{/* 塗り絵セクション */}
-		{coloringBooks.length > 0 && (
-				<section>
-				<h3 className="text-lg font-semibold mb-3">
-				塗り絵 / Coloring Books
-				</h3>
-				<BooksSection books={coloringBooks} />
-				</section>
-		)}
-		
-		{/* 写真集セクション */}
-		{photoBooks.length > 0 && (
-				<section>
-				<h3 className="text-lg font-semibold mb-3">
-				写真集 / Photo Books
-				</h3>
-				<BooksSection books={photoBooks} />
-				</section>
-		)}
-		</div>
 		</Section>
 
 		
