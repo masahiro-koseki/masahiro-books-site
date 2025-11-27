@@ -591,12 +591,6 @@ const gallerySources = [
 				>
 				{t.nav.book}
 				</button>
-				<button
-				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
-				onClick={() => scrollTo("portfolio")}
-				>
-				{t.nav.portfolio}
-				</button>
 				
 				<Link
 				href={mountainsHref}
