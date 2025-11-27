@@ -660,103 +660,120 @@ const gallerySources = [
 		{/* 全体の見出し */}
 		<H2>{t.book.lead}</H2>
 		
-		{/* ▼ プレビュー表示か、カテゴリ専用表示かを切り替え */}
-		{selectedCategory === "all" ? (
+		{/* ▼ カテゴリータブ */}
+		<div className="mt-4 flex flex-wrap gap-2 text-sm border-b border-neutral-200 pb-1">
+		<button
+		type="button"
+		onClick={() => setSelectedCategory("all")}
+		className={
+			"px-3 py-1 rounded-full" +
+			(selectedCategory === "all"
+				? " bg-neutral-900 text-white"
+			: " text-neutral-700 hover:bg-neutral-100")
+		}
+		>
+		すべて
+		</button>
+		
+		<button
+		type="button"
+		onClick={() => setSelectedCategory("picture")}
+		className={
+			"px-3 py-1 rounded-full" +
+			(selectedCategory === "picture"
+				? " bg-neutral-900 text-white"
+			: " text-neutral-700 hover:bg-neutral-100")
+		}
+		>
+		絵本 / Picture Books
+		</button>
+		
+		<button
+		type="button"
+		onClick={() => setSelectedCategory("coloring")}
+		className={
+			"px-3 py-1 rounded-full" +
+			(selectedCategory === "coloring"
+				? " bg-neutral-900 text-white"
+			: " text-neutral-700 hover:bg-neutral-100")
+		}
+		>
+		塗り絵 / Coloring Books
+		</button>
+		
+		<button
+		type="button"
+		onClick={() => setSelectedCategory("photo")}
+		className={
+			"px-3 py-1 rounded-full" +
+			(selectedCategory === "photo"
+				? " bg-neutral-900 text-white"
+			: " text-neutral-700 hover:bg-neutral-100")
+		}
+		>
+		写真集 / Photo Books
+		</button>
+		</div>
+		
+		{/* ▼ タブごとの表示内容 */}
+		{selectedCategory === "all" && (
 				<div className="mt-6 space-y-10">
-				{/* 絵本セクション（プレビュー：2冊だけ） */}
+				{/* 絵本：2冊だけプレビュー */}
 				{pictureBooks.length > 0 && (
 						<section>
-						<div className="flex items-baseline justify-between gap-2 mb-3">
-						<h3 className="text-lg font-semibold">
+						<h3 className="text-lg font-semibold mb-3">
 						絵本 / Picture Books
 						</h3>
-						<button
-						type="button"
-						onClick={() => setSelectedCategory("picture")}
-						className="text-xs text-neutral-600 underline underline-offset-4 hover:opacity-70"
-						>
-						このカテゴリをもっと見る
-						</button>
-						</div>
-						
 						<BooksSection books={pictureBooks.slice(0, 2)} />
 						</section>
 				)}
 				
-				{/* 塗り絵セクション（プレビュー：2冊だけ） */}
+				{/* 塗り絵：2冊だけプレビュー */}
 				{coloringBooks.length > 0 && (
 						<section>
-						<div className="flex items-baseline justify-between gap-2 mb-3">
-						<h3 className="text-lg font-semibold">
+						<h3 className="text-lg font-semibold mb-3">
 						塗り絵 / Coloring Books
 						</h3>
-						<button
-						type="button"
-						onClick={() => setSelectedCategory("coloring")}
-						className="text-xs text-neutral-600 underline underline-offset-4 hover:opacity-70"
-						>
-						このカテゴリをもっと見る
-						</button>
-						</div>
-						
 						<BooksSection books={coloringBooks.slice(0, 2)} />
 						</section>
 				)}
 				
-				{/* 写真集セクション（プレビュー：2冊だけ） */}
+				{/* 写真集：2冊だけプレビュー */}
 				{photoBooks.length > 0 && (
 						<section>
-						<div className="flex items-baseline justify-between gap-2 mb-3">
-						<h3 className="text-lg font-semibold">
+						<h3 className="text-lg font-semibold mb-3">
 						写真集 / Photo Books
 						</h3>
-						<button
-						type="button"
-						onClick={() => setSelectedCategory("photo")}
-						className="text-xs text-neutral-600 underline underline-offset-4 hover:opacity-70"
-						>
-						このカテゴリをもっと見る
-						</button>
-						</div>
-						
 						<BooksSection books={photoBooks.slice(0, 2)} />
 						</section>
 				)}
 				</div>
-			) : (
-				/* ▼ どれかのカテゴリが選ばれているとき：そのカテゴリだけ全件表示 */
+		)}
+		
+		{selectedCategory === "picture" && (
 				<div className="mt-6 space-y-4">
-				<div className="flex items-center justify-between gap-2">
-				<div>
 				<h3 className="text-lg font-semibold">
-				{selectedCategory === "picture" && "絵本 / Picture Books"}
-				{selectedCategory === "coloring" && "塗り絵 / Coloring Books"}
-				{selectedCategory === "photo" && "写真集 / Photo Books"}
+				絵本 / Picture Books
 				</h3>
-				<p className="mt-1 text-xs text-neutral-500">
-				カテゴリー内の本を一覧表示しています。
-				</p>
+				<BooksSection books={pictureBooks} />
 				</div>
-				
-				<button
-				type="button"
-				onClick={() => setSelectedCategory("all")}
-				className="text-xs text-neutral-600 underline underline-offset-4 hover:opacity-70"
-				>
-				すべてのカテゴリーに戻る
-				</button>
+		)}
+		
+		{selectedCategory === "coloring" && (
+				<div className="mt-6 space-y-4">
+				<h3 className="text-lg font-semibold">
+				塗り絵 / Coloring Books
+				</h3>
+				<BooksSection books={coloringBooks} />
 				</div>
-				
-				{/* 選択されたカテゴリの本をまとめて表示 */}
-				{selectedCategory === "picture" && (
-						<BooksSection books={pictureBooks} />
-				)}
-				{selectedCategory === "coloring" && (
-						<BooksSection books={coloringBooks} />
-				)}
-				{selectedCategory === "photo" && (
-						<BooksSection books={photoBooks} />
-				)}
+		)}
+		
+		{selectedCategory === "photo" && (
+				<div className="mt-6 space-y-4">
+				<h3 className="text-lg font-semibold">
+				写真集 / Photo Books
+				</h3>
+				<BooksSection books={photoBooks} />
 				</div>
 		)}
 		</Section>
