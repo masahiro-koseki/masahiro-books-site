@@ -78,7 +78,7 @@ export default function BooksSection({ books }: BooksSectionProps) {
 					</div>
 					
 					{/* 右：カバー画像（正方形） */}
-					<div className="md:w-32 lg:w-36 md:shrink-0">
+					<div className="md:w-40 lg:w-48 md:shrink-0">
 					<div className="relative aspect-square rounded-xl overflow-hidden bg-neutral-100">
 					{/* プロパティ名は、今お使いのカバー画像のフィールド名に合わせて変更してください */}
 					<Image

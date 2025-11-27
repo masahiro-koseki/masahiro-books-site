@@ -94,7 +94,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 					key={cover.src}
 					className="shrink-0 w-28 md:w-32"
 					>
-					<div className="relative aspect-[2/3] rounded-xl overflow-hidden shadow-md bg-neutral-100">
+					<div className="relative aspect-square rounded-xl overflow-hidden shadow-md bg-neutral-100">
 					<img
 					src={cover.src}
 					alt={cover.alt}
