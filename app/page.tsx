@@ -536,8 +536,6 @@ const gallerySources = [
 		<button onClick={() => scrollTo("book")} className="hover:opacity-70">
 		{t.nav.book}
 		</button>
-		<button onClick={() => scrollTo("portfolio")} className="hover:opacity-70">
-		{t.nav.portfolio}
 		</button>
 		<Link href={mountainsHref} className="hover:opacity-70">
 		{lang === "ja" ? "山の紹介" : "Mountains"}
