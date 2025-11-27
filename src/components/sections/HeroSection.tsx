@@ -41,18 +41,25 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		<div className="mx-auto max-w-5xl space-y-8 text-center">
 		{/* 上段：タイトル＋テキスト */}
 		<motion.div
-		initial={{ opacity: 0, scale: 0.98 }}
-		animate={{ opacity: 1, scale: 1 }}
+		initial={{ opacity: 0, y: 8 }}
+		animate={{ opacity: 1, y: 0 }}
 		transition={{ duration: 0.6 }}
-		className="order-1 md:order-2 flex justify-center"
+		className="space-y-4"
 		>
-		<div className="relative w-52 md:w-80 lg:w-[360px] aspect-square rounded-xl shadow-xl overflow-hidden bg-neutral-100">
-		<img
-		src="/covers/main-book.jpg"
-		alt="Main book cover"
-		className="h-full w-full object-cover"
-		/>
-		</div>
+		<h1 className="text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
+		{texts.title}
+		</h1>
+		
+		<p className="text-base md:text-lg text-neutral-600 leading-relaxed">
+		{texts.subtitle}
+		</p>
+		
+		{texts.poem && (
+				<p
+				className="text-sm text-neutral-500 leading-relaxed"
+				dangerouslySetInnerHTML={{ __html: texts.poem }}
+				/>
+		)}
 		</motion.div>
 		
 		{/* 中段：ボタン */}
