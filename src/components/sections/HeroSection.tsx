@@ -17,15 +17,15 @@ type HeroSectionProps = {
 };
 
 export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
-	// 書籍カバーを横並びにするためのリスト
+	// ヒーロー下部に並べるカバー画像
 	const covers = [
+	{
+		src: "/covers/stoat-part1.jpg",
+		alt: "Stoat's Big Mountain Adventure Part 1",
+	},
 	{
 		src: "/covers/stoat-part2.jpg",
 		alt: "Stoat's Big Mountain Adventure Part 2",
-	},
-	{
-		src: "/covers/stoat-part3.jpg",
-		alt: "Stoat's Big Mountain Adventure Part 3",
 	},
 	{
 		src: "/covers/wildbirds-7.jpg",
@@ -80,7 +80,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		</Button>
 		</div>
 		
-		{/* 下段：本のカバーが横一列に並ぶ「本棚ストリップ」 */}
+		{/* 下段：カバー4枚のストリップ（サイズ少し大きめ） */}
 		<motion.div
 		initial={{ opacity: 0, y: 8 }}
 		animate={{ opacity: 1, y: 0 }}
@@ -92,9 +92,9 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		{covers.map((cover) => (
 					<div
 					key={cover.src}
-					className="shrink-0 w-28 md:w-32"
+					className="shrink-0 w-32 md:w-40"
 					>
-					<div className="relative aspect-square rounded-xl overflow-hidden shadow-md bg-neutral-100">
+					<div className="relative aspect-square rounded-xl overflow-hidden bg-neutral-100">
 					<img
 					src={cover.src}
 					alt={cover.alt}
@@ -104,7 +104,6 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 					</div>
 		))}
 		</div>
-		{/* 小さなキャプション */}
 		<p className="mt-2 text-xs text-neutral-500">
 		オコジョの絵本シリーズ、野鳥・お城の塗り絵など、
 		いろいろな本を少しずつ集めています。
