@@ -2,9 +2,6 @@
 // full code rewrite will be placed next turn after structure scaffold confirmation
 "use client";
 
-import { useState } from "react";
-// 既存の import はそのまま
-
 import React, { useMemo, useState, useEffect } from "react";
 import HeroSection from "@/components/sections/HeroSection";
 import BookSection from "@/components/sections/BookSection";
