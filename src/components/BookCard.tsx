@@ -1,4 +1,3 @@
-// src/components/BookCard.tsx
 import Link from "next/link";
 import Image from "next/image";
 import type { Book } from "@/data/books";
@@ -7,29 +6,29 @@ export default function BookCard({ book }: { book: Book }) {
 	return (
 		<Link
 		href={`/books/${book.id}`}
-		className="group rounded-lg shadow hover:shadow-lg transition p-3 border border-neutral-200 block"
+		className="group block rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm hover:shadow-md transition"
 		>
-		{/* カバー画像 */}
+		{/* カバー画像（縦長に変更） */}
 		{book.coverSrc && (
-				<div className="w-full aspect-square relative overflow-hidden rounded-md">
+				<div className="w-full relative overflow-hidden rounded-xl bg-neutral-100 aspect-[2/3]">
 				<Image
 				src={book.coverSrc}
 				alt={book.title}
 				fill
-				className="object-contain bg-white"
+				className="object-cover"
 				/>
 				</div>
 		)}
 		
 		{/* タイトル */}
-		<h3 className="mt-3 font-semibold text-lg">{book.title}</h3>
+		<h3 className="mt-3 text-sm font-semibold text-neutral-900 group-hover:text-neutral-950">
+		{book.title}
+		</h3>
 		
 		{/* 日本語タイトル */}
 		{book.titleJa && (
-				<p className="text-sm text-neutral-600">{book.titleJa}</p>
+				<p className="mt-1 text-xs text-neutral-600">{book.titleJa}</p>
 		)}
-		
-		{/* Amazon ボタン（詳細ページ側に任せるため、ここでは何も表示しなくてOK） */}
 		</Link>
 	);
 }
