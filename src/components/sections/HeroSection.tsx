@@ -20,7 +20,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 	// ヒーロー下部に並べるカバー画像
 	const covers = [
 	{
-		src: "/covers/stoat-part1.jpg",
+		src: "/covers/stoat-part1-jp.jpg",
 		alt: "Stoat's Big Mountain Adventure Part 1",
 	},
 	{
