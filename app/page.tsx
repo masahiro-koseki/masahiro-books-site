@@ -16,6 +16,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { GalleryVerticalEnd, BookOpen, Camera, Mail, ExternalLink, ArrowRight, MapPin, Calendar, Globe } from "lucide-react";
 import Link from "next/link";
 
+import BooksSection from "@/components/BooksSection";
+import { BOOKS } from "@/data/books";
+
+
 // --- Amazon Links ---
 const AMAZON_JP = "https://www.amazon.co.jp/dp/B0G1CNPJ1L";
 const AMAZON_EN = "https://www.amazon.com/Fascinated-Mountains-Nature-Landscape-Photography/dp/B0G1GZVWKW?ref_=ast_author_dp&th=1&psc=1";
@@ -132,6 +136,10 @@ export default function Page() {
   const [lbOpen, setLbOpen] = useState(false);
   const [lbCat, setLbCat] = useState(0);
   const [lbIndex, setLbIndex] = useState(0);
+	
+	const pictureBooks = BOOKS.filter((b) => b.category === "picture-book");
+	const coloringBooks = BOOKS.filter((b) => b.category === "coloring");
+	const photoBooks = BOOKS.filter((b) => b.category === "photo");
 
 	
 	useEffect(() => {
@@ -349,76 +357,127 @@ const gallerySources = [
 	}
 	] as const;
 
-  const t = useMemo(
-    () =>
-      ({
-        ja: {
-          nav: { home: "ホーム", book: "写真集", portfolio: "ポートフォリオ", about: "プロフィール", news: "お知らせ", contact: "お問い合わせ" },
-					hero: { title: "山と自然に魅せられて", subtitle: "東北・岩手の山と四季を写した日本の自然風景写真。", poem: "朝の光に導かれ、山の息づかいに心を寄せる。<br />静けさに包まれた森の気配や、移ろう季節の色を感じながら、出会った瞬間のままにそっと写しとった記録。", cta1: "写真集を見る", cta2: "作品をみる" },
-          book: {
-            lead: "写真集『山と自然に魅せられて』",
-            desc: "焼石岳、栗駒山、早池峰山――地元の山と沢で出会った光景を、静けさと臨場感を大切に編み上げた一冊。",
-            specs: ["判型：210×210mm / Kindle版 紙書籍", "ページ数：およそ140ページ", "言語：日本語・英語併記"],
-			buttons: { preview: "プレビュー", buy: "Amazonで買う" },
-          },
-          portfolio: {
-            lead: "ポートフォリオ",
-            desc: "山岳風景、渓流、樹木、湿原、厳冬の森など、テーマ別に作品を厳選。",
-            categories: [
-						{ name: "山岳・夜明け", note: "焼石岳・早池峰など" },
-						{ name: "渓流・沢音", note: "沢・湿原・湖沼" },
-						{ name: "森・樹影", note: "ブナ林・杉美林" },
-            ]
-          },
-			about: {
+	const t = useMemo(
+		() =>
+		({
+				ja: {
+					nav: {
+						home: "ホーム",
+						book: "本の一覧",
+						about: "プロフィール",
+						news: "お知らせ",
+						contact: "お問い合わせ"
+					},
+					
+					hero: {
+						title: "山と自然を楽しむ絵本・塗り絵・写真集",
+						subtitle:
+						"オコジョの山のぼうけん、城や野鳥の塗り絵シリーズ、そして自然風景写真集まで。",
+						poem:
+						"東北・岩手の山や森、町並みへのまなざしから生まれた本たち。<br />" +
+						"ページをめくるたびに、山の息づかいや季節の色合いを、そっとたどるように楽しんでいただけたらうれしく思います。",
+						cta1: "本の一覧を見る",
+						cta2: "作品ギャラリーへ"
+					},
+					
+					// ★ トップページの書籍セクション見出し
+					book: {
+						lead: "本の一覧",
+						desc:
+						"これまでに制作した絵本、塗り絵シリーズ、写真集をカテゴリごとにご紹介します。"
+					},
+					
+					about: {
 						title: "プロフィール",
-						bio: "岩手県の山々と渓流に魅せられ、四季折々の自然を撮り続ける。中学時代の渓流釣りをきっかけに自然と深く関わり、17歳頃から栗駒山、焼石岳、早池峰山など地元の山へ足を運ぶようになる。朝焼けの稜線や静かな渓谷の佇まいに心を奪われ、「この瞬間を残したい」という思いから写真撮影を始める。山岳風景から渓流、樹木、湿原の息づかいまで、自然そのものが持つ“静けさの美しさ”を丁寧に写し取ることを大切にしている。岩手を中心とした東北の風景と向き合いながら、今も変わらずフィールドに立ち続けている。",
+						bio:
+						"岩手県の山々と渓流に魅せられ、四季折々の自然を撮り続ける。中学時代の渓流釣りをきっかけに自然と深く関わり、17歳頃から栗駒山、焼石岳、早池峰山など地元の山へ足を運ぶようになる。朝焼けの稜線や静かな渓谷の佇まいに心を奪われ、「この瞬間を残したい」という思いから写真撮影を始める。山岳風景から渓流、樹木、湿原の息づかいまで、自然そのものが持つ“静けさの美しさ”を大切にしている。",
 						location: "拠点：岩手県（日本）",
 						focus: "主なテーマ：山岳・渓流・森の光",
 						links: "詳しいプロフィール"
 					},
-          news: {
-            title: "お知らせ",
-              items: NEWS_ITEMS
-          },
-          contact: { title: "お問い合わせ", desc: "お気軽にお知らせください。", name: "お名前", email: "メールアドレス", message: "メッセージ", send: "送信" },
-          footer: { rights: "© Masahiro Koseki", lang: "言語", jp: "日本語", en: "English" }
-        },
-        en: {
-          nav: { home: "Home", book: "Photo Book", portfolio: "Portfolio", about: "About", news: "News", contact: "Contact" },
-					hero: { title: "Fascinated by Mountains and Nature", subtitle: "A Landscape Photography Journey through the Mountains and Four Seasons of Northern Japan.", poem: "Guided by the morning light, I lean into the quiet breath of the mountains.<br />Surrounded by the forest’s stillness and the shifting colors of the seasons, these photographs gently preserve the moments just as they appeared.", cta1: "View Photo Book", cta2: "View Portfolio" },
-          book: {
-						lead: "Photo Book ｢ Fascinated by Mountains and Nature 」",
-            desc: "Yakeishidake, Kurikomayama, and Hayachine—quiet moments gathered from home mountains and streams.",
-            specs: ["Format: 210×210mm / Kindle Paperback", "~140 pages", "Bilingual: Japanese & English"],
-						buttons: { preview: "Preview", buy: "Buy on Amazon", },
-          },
-          portfolio: {
-            lead: "Portfolio",
-            desc: "Curated works by theme: alpine dawns, streams, woodlands, marshes.",
-						categories: [
-						{ name: "Alpine / Dawn", note: "Yakeishidake, Hayachine" },
-						{ name: "Streams & Waterside", note: "Streams, marshes, ponds" },
-						{ name: "Woodlands", note: "Beech & Cedar" },
-            ]
-          },
-			about: {
-						title: "About",
-						bio: "A photographer captivated by the mountains and streams of Iwate, Japan. His connection with nature began in junior high school while fishing in local mountain streams. By the age of seventeen, he started exploring nearby peaks such as Mt. Kurikoma, Mt. Yakeishi, and Mt. Hayachine. The glow of dawn on the ridgeline and the quiet presence of deep valleys inspired him to pick up a camera, hoping to preserve those unforgettable moments. From mountain landscapes to streams, forests, and wetlands, he seeks to capture the subtle and tranquil beauty found in nature. Based in the Tohoku region, he continues to spend time in the field, photographing the changing seasons of his home mountains.",
-						location: "Base: Iwate, Japan",
-						focus: "Main themes: mountains, streams, forest light",
-						links: "Detailed profile"
+					
+					news: {
+						title: "お知らせ",
+						items: NEWS_ITEMS
 					},
-          news: {
-            title: "News",
-            items: NEWS_ITEMS
-          },
-          contact: { title: "Contact", desc: "please get in touch.", name: "Name", email: "Email", message: "Message", send: "Send" },
-          footer: { rights: "© Masahiro Koseki", lang: "Language", jp: "日本語", en: "English" }
-        }
-      } as const)[lang],
-    [lang]
-  );
+					
+					contact: {
+						title: "お問い合わせ",
+						desc: "お気軽にお知らせください。",
+						name: "お名前",
+						email: "メールアドレス",
+						message: "メッセージ",
+						send: "送信"
+					},
+					
+					footer: {
+						rights: "© Masahiro Koseki",
+						lang: "言語",
+						jp: "日本語",
+						en: "English"
+					}
+				},
+				
+				en: {
+					nav: {
+						home: "Home",
+						book: "Books",
+						about: "About",
+						news: "News",
+						contact: "Contact"
+					},
+					
+					hero: {
+						title: "Picture Books, Coloring Books & Nature Photo Books",
+						subtitle:
+						"Stoat adventure picture books, castles and wild birds coloring series, and a landscape photo book from northern Japan.",
+						poem:
+						"Born from quiet moments in the mountains, forests, and towns of northern Japan.<br />" +
+						"As you turn each page, I hope you gently feel the breath of the mountains and the changing colors of the seasons.",
+						cta1: "Browse All Books",
+						cta2: "View Gallery"
+					},
+					
+					book: {
+						lead: "Books & Coloring Books",
+						desc:
+						"Here you’ll find my published works, including picture books, Japanese castles and wild birds coloring series, and a landscape photo book.",
+					},
+					
+					about: {
+						title: "About",
+						bio:
+						"A photographer and author inspired by the mountains and streams of Iwate, Japan. His connection with nature began while fishing in local mountain streams as a teenager. Since then, he has spent decades exploring Mt. Kurikoma, Mt. Yakeishi, Mt. Hayachine, and the surrounding landscapes. His works focus on the quiet beauty of mountains, forests, and flowing water.",
+						location: "Base: Iwate, Japan",
+						focus: "Themes: mountains, streams, forest light",
+						links: "Read More"
+					},
+					
+					news: {
+						title: "News",
+						items: NEWS_ITEMS
+					},
+					
+					contact: {
+						title: "Contact",
+						desc: "Please get in touch.",
+						name: "Name",
+						email: "Email",
+						message: "Message",
+						send: "Send"
+					},
+					
+					footer: {
+						rights: "© Masahiro Koseki",
+						lang: "Language",
+						jp: "日本語",
+						en: "English"
+					}
+				}
+		} as const)[lang],
+		[lang]
+	);
+
 
 	const scrollTo = (id: string) => {
 		if (typeof window === "undefined") return;
@@ -593,36 +652,55 @@ const gallerySources = [
 		</header>
 
 
-      <Section id="home" className="pt-12 pb-0">
+		<Section id="home" className="pt-10 pb-6">
 		<HeroSection texts={t.hero} scrollTo={scrollTo} />
-        <div className="w-full h-px bg-neutral-200 my-8"></div>
-	  </Section>
+		</Section>
 		
-		{/* ---- BOOK ---- */}
+		{/* ---- BOOKS (All Works) ---- */}
 		<Section
 		id="book"
-		className={`section-spacing ${
-				lang === "ja"
-				? "scroll-mt-20 md:scroll-mt-20"
-				: "scroll-mt-16 md:scroll-mt-20"
-		}`}
+		className="section-spacing scroll-mt-20 md:scroll-mt-20"
 		>
-		<div id="BookSection">
+		{/* 全体の見出し */}
 		<H2>{t.book.lead}</H2>
 		
-		<BookSection
-		lang={lang}
-		book={t.book}
-		highlights={HIGHLIGHTS}
-		amazonJp={AMAZON_JP}
-		amazonEn={AMAZON_EN}
-		/>
+		<div className="mt-6 space-y-10">
+		{/* 絵本セクション */}
+		{pictureBooks.length > 0 && (
+				<section>
+				<h3 className="text-lg font-semibold mb-3">
+				絵本 / Picture Books
+				</h3>
+				<BooksSection books={pictureBooks} />
+				</section>
+		)}
+		
+		{/* 塗り絵セクション */}
+		{coloringBooks.length > 0 && (
+				<section>
+				<h3 className="text-lg font-semibold mb-3">
+				塗り絵 / Coloring Books
+				</h3>
+				<BooksSection books={coloringBooks} />
+				</section>
+		)}
+		
+		{/* 写真集セクション */}
+		{photoBooks.length > 0 && (
+				<section>
+				<h3 className="text-lg font-semibold mb-3">
+				写真集 / Photo Books
+				</h3>
+				<BooksSection books={photoBooks} />
+				</section>
+		)}
 		</div>
 		</Section>
+
 		
 		
 		{/* ---- PORTFOLIO ---- */}
-		<Section
+		{/*<Section
 		id="portfolio"
 		className={`section-spacing ${
 				lang === "ja"
@@ -640,7 +718,7 @@ const gallerySources = [
 		openGallery={openGallery}
 		/>
 		</div>
-		</Section>
+		</Section>*/}
 		
 		
 		{/* ---- ABOUT ---- */}

@@ -20,24 +20,20 @@ type HeroSectionProps = {
 export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 	const hero = useMemo(
 		() => ({
+				// ★ カバー画像のスライド
 				srcs: [
-				"/images/hero_tsutsuji_1800.webp",
-				"/images/hero_alpine.webp",
-				"/images/hero_streams.webp",
-				"/images/hero_woodlands.webp",
+				"/covers/stoat-part2.jpg",
+				"/covers/stoat-part3.jpg",
+				"/covers/wildbirds-7.jpg",
+				"/covers/castles.jpg",
 				],
 				alts: [
-				"Azalea hillside in bloom at spring dawn",
-				"Alpine slope at sunrise",
-				"Mossy mountain stream",
-				"Old beech tree in fresh green",
+				"Stoat's Big Mountain Adventure Part 2",
+				"Stoat's Big Mountain Adventure Part 3",
+				"Japanese Wild Birds Series 7",
+				"Castles of Japan",
 				],
 		}),
-		[]
-	);
-	
-	const positions = useMemo(
-		() => ["center 40%", "center 50%", "center 50%", "center 60%"],
 		[]
 	);
 	
@@ -49,7 +45,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 			}, 6000);
 			return () => clearInterval(id);
 	}, [hero.srcs.length]);
-
+	
 	const prev = () =>
 	setIndex((i) => (i - 1 + hero.srcs.length) % hero.srcs.length);
 	const next = () => setIndex((i) => (i + 1) % hero.srcs.length);
@@ -81,29 +77,31 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		{/* ボタン */}
 		<div className="mt-6 flex gap-3">
 		<Button className="rounded-2xl" onClick={() => scrollTo("book")}>
+		{/* id="book" ではなく id="book" セクションに飛ばす */}
 		<BookOpen className="h-4 w-4 mr-2" />
 		{texts.cta1}
 		</Button>
 		<Button
 		variant="outline"
 		className="rounded-2xl"
-		onClick={() => scrollTo("portfolio")}
+		onClick={() => scrollTo("book")}
 		>
+		{/* いまはポートフォリオをコメントアウトしているので、とりあえずこちらも book へ */}
 		<Camera className="h-4 w-4 mr-2" />
 		{texts.cta2}
 		</Button>
 		</div>
 		</div>
 		
-		{/* 右側：ヒーロー画像スライダー */}
+		{/* 右側：ヒーロー画像スライダー（書籍カバー用に調整済み） */}
 		<motion.div
 		initial={{ opacity: 0, scale: 0.98 }}
 		whileInView={{ opacity: 1, scale: 1 }}
 		viewport={{ once: true }}
 		transition={{ duration: 0.6 }}
-		className="relative"
+		className="relative md:justify-self-end w-full"
 		>
-		<div className="aspect-[3/2] w-full rounded-2xl overflow-hidden shadow-xl bg-neutral-100 relative">
+		<div className="aspect-square w-full max-w-sm md:max-w-md mx-auto rounded-2xl overflow-hidden shadow-xl bg-white relative">
 		<AnimatePresence mode="wait">
 		<motion.img
 		key={hero.srcs[index]}
@@ -113,13 +111,11 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		animate={{ opacity: 1 }}
 		exit={{ opacity: 0 }}
 		transition={{ duration: 0.8 }}
-		className="absolute inset-0 h-full w-full object-cover"
-		style={{ objectPosition: positions[index] }}
+		className="absolute inset-0 h-full w-full object-contain"
 		/>
 		</AnimatePresence>
 		
-		{/* 下側にうっすらグラデーション */}
-		<div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+		{/* ← グラデーションは書籍カバーには不要なので削除 */}
 		
 		{/* 左右の切り替えボタン */}
 		<div className="absolute inset-0 flex items-center justify-between px-3">

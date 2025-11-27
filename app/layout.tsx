@@ -8,13 +8,13 @@ export const metadata: Metadata = {
 	
 	title: {
 		default:
-		"山と自然に魅せられて / Fascinated by Mountains and Nature | Masahiro Koseki Photography",
+		"Books & Coloring Books by Masahiro Koseki",
 		template:
-		"%s | 山と自然に魅せられて / Fascinated by Mountains and Nature | Masahiro Koseki Photography",
+		"%s | Books & Coloring Books by Masahiro Koseki",
 	},
 	
 	description:
-	"岩手の山々、渓流、森の静寂をテーマにした写真集「山と自然に魅せられて（Fascinated by Mountains and Nature）」の公式サイト。焼石岳・栗駒山・早池峰山など、四季の表情を写し取った風景写真を紹介します。",
+	"Picture books of a small stoat, Japanese castles coloring books, wild birds series, and nature photo books by Masahiro Koseki. オコジョ絵本、城や野鳥の塗り絵、自然写真集まで、小関政弘の作品をまとめた公式紹介サイトです。",
 	
 	keywords: [
 	// 日本語
