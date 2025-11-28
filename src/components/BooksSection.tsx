@@ -10,6 +10,7 @@ type BooksSectionProps = {
 };
 
 function truncate(text: string, max: number) {
+	if (!text) return "";
 	if (text.length <= max) return text;
 	return text.slice(0, max) + "…";
 }
@@ -20,21 +21,20 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 	return (
 		<div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
 		{books.map((book) => {
-					// ▼ タイトル
+					// ▼ メインタイトル（言語に応じて切り替え）
 					const mainTitle =
 					lang === "ja"
 					? book.titleJa ?? book.title
 					: book.title || book.titleJa || "";
 					
-					const subTitle = undefined;
-					
-					// ▼ 説明文（日本語と英語で長さを変える）
+					// ▼ 説明文（日本語／英語で切り替え）
 					const fullDesc =
 					lang === "ja"
 					? book.descriptionJa ?? book.description
 					: book.description ?? book.descriptionJa;
 					
-					const maxLength = lang === "ja" ? 120 : 190; // ★ここが今回の重要ポイント
+					// ここを変えれば文字数を調整できます
+					const maxLength = lang === "ja" ? 120 : 190;
 					const shortDesc = fullDesc ? truncate(fullDesc, maxLength) : "";
 					
 					// ▼ ボタン文言
@@ -43,17 +43,15 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 					return (
 						<article
 						key={book.id}
-						className="flex flex-col md:flex-row gap-6 rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm"
+						className="flex flex-col md:flex-row h-full gap-6 rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm"
 						>
-						{/* 左：テキスト */}
+						{/* 左：タイトル＋テキスト */}
 						<div className="flex-1">
 						<h3 className="text-base md:text-lg font-semibold text-neutral-900">
 						{mainTitle}
 						</h3>
 						
-						//{subTitle && (
-						//		<p className="mt-1 text-xs text-neutral-500">{subTitle}</p>
-						//)}
+						{/* サブタイトルは表示しない */}
 						
 						{shortDesc && (
 								<p className="mt-3 text-sm text-neutral-600">{shortDesc}</p>
