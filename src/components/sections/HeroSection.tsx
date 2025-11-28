@@ -59,7 +59,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 		
 		{/* ▼ スライド画像 */}
 		<div className="relative w-full mt-10 flex justify-center">
-		<div className="relative w-full max-w-2xl aspect-video overflow-hidden rounded-xl bg-transparent">
+		<div className="relative w-full max-w-3xl aspect-video overflow-hidden rounded-xl bg-transparent">
 		{sliderImages.map((src, i) => (
 					<Image
 					key={i}
