@@ -67,7 +67,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 					fill
 					priority
 					className={`
-						object-cover transition-opacity duration-1000
+						object-contain transition-opacity duration-1000
 						${i === index ? "opacity-100" : "opacity-0"}
 					`}
 					/>
