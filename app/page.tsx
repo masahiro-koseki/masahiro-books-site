@@ -672,7 +672,7 @@ const gallerySources = [
 			: " text-neutral-700 hover:bg-neutral-100")
 		}
 		>
-		すべて
+		{lang === "ja" ? "すべて" : "All"}
 		</button>
 		
 		<button
@@ -685,7 +685,7 @@ const gallerySources = [
 			: " text-neutral-700 hover:bg-neutral-100")
 		}
 		>
-		絵本 / Picture Books
+		{lang === "ja" ? "絵本" : "Picture Books"}
 		</button>
 		
 		<button
@@ -698,7 +698,7 @@ const gallerySources = [
 			: " text-neutral-700 hover:bg-neutral-100")
 		}
 		>
-		塗り絵 / Coloring Books
+		{lang === "ja" ? "塗り絵" : "Coloring Books"}
 		</button>
 		
 		<button
@@ -711,7 +711,7 @@ const gallerySources = [
 			: " text-neutral-700 hover:bg-neutral-100")
 		}
 		>
-		写真集 / Photo Books
+		{lang === "ja" ? "写真集" : "Photo Books"}
 		</button>
 		</div>
 		

@@ -20,7 +20,7 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 	return (
 		<div className="mt-6 space-y-6">
 		{books.map((book) => {
-					// ▼ タイトル（日英の出し分け）
+					// ▼ タイトル
 					const mainTitle =
 					lang === "ja"
 					? book.titleJa ?? book.title
@@ -35,13 +35,17 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 					? book.titleJa
 					: undefined;
 					
-					// ▼ 説明文（日→descriptionJa / 英→description）
+					// ▼ 説明文（日本語と英語で長さを変える）
 					const fullDesc =
 					lang === "ja"
 					? book.descriptionJa ?? book.description
 					: book.description ?? book.descriptionJa;
 					
-					const shortDesc = fullDesc ? truncate(fullDesc, 120) : "";
+					const maxLength = lang === "ja" ? 120 : 190; // ★ここが今回の重要ポイント
+					const shortDesc = fullDesc ? truncate(fullDesc, maxLength) : "";
+					
+					// ▼ ボタン文言
+					const detailLabel = lang === "ja" ? "詳細を見る" : "View details";
 					
 					return (
 						<article
@@ -90,7 +94,7 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 						href={`/books/${book.id}`}
 						className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
 						>
-						詳細を見る
+						{detailLabel}
 						</Link>
 						</div>
 						</div>
