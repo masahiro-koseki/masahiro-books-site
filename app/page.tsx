@@ -662,7 +662,57 @@ const gallerySources = [
 		
 		{/* ▼ カテゴリータブ */}
 		<div className="mt-4 flex flex-wrap gap-2 text-sm border-b border-neutral-200 pb-1">
-		{/* …タブ部分はそのまま… */}
+		<button
+		type="button"
+		onClick={() => setSelectedCategory("all")}
+		className={
+			"px-3 py-1 rounded-full" +
+			(selectedCategory === "all"
+				? " bg-neutral-900 text-white"
+			: " text-neutral-700 hover:bg-neutral-100")
+		}
+		>
+		すべて
+		</button>
+		
+		<button
+		type="button"
+		onClick={() => setSelectedCategory("picture")}
+		className={
+			"px-3 py-1 rounded-full" +
+			(selectedCategory === "picture"
+				? " bg-neutral-900 text-white"
+			: " text-neutral-700 hover:bg-neutral-100")
+		}
+		>
+		絵本 / Picture Books
+		</button>
+		
+		<button
+		type="button"
+		onClick={() => setSelectedCategory("coloring")}
+		className={
+			"px-3 py-1 rounded-full" +
+			(selectedCategory === "coloring"
+				? " bg-neutral-900 text-white"
+			: " text-neutral-700 hover:bg-neutral-100")
+		}
+		>
+		塗り絵 / Coloring Books
+		</button>
+		
+		<button
+		type="button"
+		onClick={() => setSelectedCategory("photo")}
+		className={
+			"px-3 py-1 rounded-full" +
+			(selectedCategory === "photo"
+				? " bg-neutral-900 text-white"
+			: " text-neutral-700 hover:bg-neutral-100")
+		}
+		>
+		写真集 / Photo Books
+		</button>
 		</div>
 		
 		{/* ▼ タブごとの表示内容 */}
