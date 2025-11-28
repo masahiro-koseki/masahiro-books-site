@@ -59,7 +59,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 		
 		{/* ▼ スライド画像 */}
 		<div className="relative w-full mt-10 flex justify-center">
-		<div className="relative w-full max-w-2xl aspect-[16/9] overflow-hidden rounded-xl">
+		<div className="relative w-full max-w-2xl aspect-video overflow-hidden rounded-xl">
 		{sliderImages.map((src, i) => (
 					<Image
 					key={i}
@@ -68,7 +68,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 					fill
 					priority
 					className={`
-						object-contains transition-opacity duration-1000
+						object-cover transition-opacity duration-1000
 						${i === index ? "opacity-100" : "opacity-0"}
 					`}
 					/>
