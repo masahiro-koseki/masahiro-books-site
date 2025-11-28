@@ -101,7 +101,7 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 						
 						{/* 右：カバー画像 */}
 						{book.coverSrc && (
-								<div className="w-full md:w-56 lg:w-64 shrink-0">
+								<div className="w-full md:w-48 lg:w-56 shrink-0">
 								<div className="relative aspect-square rounded-xl overflow-hidden bg-neutral-100">
 								<Image
 								src={book.coverSrc}
