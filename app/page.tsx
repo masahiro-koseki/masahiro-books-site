@@ -662,57 +662,7 @@ const gallerySources = [
 		
 		{/* ▼ カテゴリータブ */}
 		<div className="mt-4 flex flex-wrap gap-2 text-sm border-b border-neutral-200 pb-1">
-		<button
-		type="button"
-		onClick={() => setSelectedCategory("all")}
-		className={
-			"px-3 py-1 rounded-full" +
-			(selectedCategory === "all"
-				? " bg-neutral-900 text-white"
-			: " text-neutral-700 hover:bg-neutral-100")
-		}
-		>
-		すべて
-		</button>
-		
-		<button
-		type="button"
-		onClick={() => setSelectedCategory("picture")}
-		className={
-			"px-3 py-1 rounded-full" +
-			(selectedCategory === "picture"
-				? " bg-neutral-900 text-white"
-			: " text-neutral-700 hover:bg-neutral-100")
-		}
-		>
-		絵本 / Picture Books
-		</button>
-		
-		<button
-		type="button"
-		onClick={() => setSelectedCategory("coloring")}
-		className={
-			"px-3 py-1 rounded-full" +
-			(selectedCategory === "coloring"
-				? " bg-neutral-900 text-white"
-			: " text-neutral-700 hover:bg-neutral-100")
-		}
-		>
-		塗り絵 / Coloring Books
-		</button>
-		
-		<button
-		type="button"
-		onClick={() => setSelectedCategory("photo")}
-		className={
-			"px-3 py-1 rounded-full" +
-			(selectedCategory === "photo"
-				? " bg-neutral-900 text-white"
-			: " text-neutral-700 hover:bg-neutral-100")
-		}
-		>
-		写真集 / Photo Books
-		</button>
+		{/* …タブ部分はそのまま… */}
 		</div>
 		
 		{/* ▼ タブごとの表示内容 */}
@@ -724,7 +674,10 @@ const gallerySources = [
 						<h3 className="text-lg font-semibold mb-3">
 						絵本 / Picture Books
 						</h3>
-						<BooksSection books={pictureBooks.slice(0, 2)} />
+						<BooksSection
+						books={pictureBooks.slice(0, 2)}
+						lang={lang}
+						/>
 						</section>
 				)}
 				
@@ -734,7 +687,10 @@ const gallerySources = [
 						<h3 className="text-lg font-semibold mb-3">
 						塗り絵 / Coloring Books
 						</h3>
-						<BooksSection books={coloringBooks.slice(0, 2)} />
+						<BooksSection
+						books={coloringBooks.slice(0, 2)}
+						lang={lang}
+						/>
 						</section>
 				)}
 				
@@ -744,7 +700,10 @@ const gallerySources = [
 						<h3 className="text-lg font-semibold mb-3">
 						写真集 / Photo Books
 						</h3>
-						<BooksSection books={photoBooks.slice(0, 2)} />
+						<BooksSection
+						books={photoBooks.slice(0, 2)}
+						lang={lang}
+						/>
 						</section>
 				)}
 				</div>
@@ -755,7 +714,7 @@ const gallerySources = [
 				<h3 className="text-lg font-semibold">
 				絵本 / Picture Books
 				</h3>
-				<BooksSection books={pictureBooks} />
+				<BooksSection books={pictureBooks} lang={lang} />
 				</div>
 		)}
 		
@@ -764,7 +723,7 @@ const gallerySources = [
 				<h3 className="text-lg font-semibold">
 				塗り絵 / Coloring Books
 				</h3>
-				<BooksSection books={coloringBooks} />
+				<BooksSection books={coloringBooks} lang={lang} />
 				</div>
 		)}
 		
@@ -773,7 +732,7 @@ const gallerySources = [
 				<h3 className="text-lg font-semibold">
 				写真集 / Photo Books
 				</h3>
-				<BooksSection books={photoBooks} />
+				<BooksSection books={photoBooks} lang={lang} />
 				</div>
 		)}
 		</Section>
