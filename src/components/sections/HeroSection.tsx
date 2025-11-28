@@ -68,7 +68,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		src={heroImage}
 		alt="Hero background"
 		fill
-		className="object-contain"
+		className="object-cover"
 		priority
 		/>
 		{/* 軽いグラデーション（好みで削除可） */}
