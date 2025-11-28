@@ -20,7 +20,7 @@ type HeroSectionProps = {
 
 export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 	// ★ ヒーロー画像：お好みでパスを差し替え可
-	const heroImage = "/books/stoat-part2/sample-1.jpg";
+	const heroImage = "/public/covers/hero-image-1.jpg";
 	
 	return (
 		<section className="pt-4 pb-4">
