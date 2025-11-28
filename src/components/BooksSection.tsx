@@ -41,7 +41,7 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 					? book.descriptionJa ?? book.description
 					: book.description ?? book.descriptionJa;
 					
-					const maxLength = lang === "ja" ? 120 : 190; // ★ここが今回の重要ポイント
+					const maxLength = lang === "ja" ? 9999 : 9999; // ★ここが今回の重要ポイント
 					const shortDesc = fullDesc ? truncate(fullDesc, maxLength) : "";
 					
 					// ▼ ボタン文言
