@@ -15,6 +15,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 	const sliderImages = [
 	"/covers/hero-slide-image-1.jpg", // ← Exploring Worlds
 	"/covers/hero-slide-image-2.jpg", // ← Reading His Own Adventure
+	"/covers/hero-slide-image-3.jpg", // ← Reading His Own Adventure
 	];
 	
 	const [index, setIndex] = useState(0);
@@ -56,7 +57,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 		
 		{/* ▼ スライド画像 */}
 		<div className="relative w-full mt-10 flex justify-center">
-		<div className="relative w-full max-w-4xl aspect-video overflow-hidden rounded-xl">
+		<div className="relative w-full max-w-３xl aspect-video overflow-hidden rounded-xl">
 		{sliderImages.map((src, i) => (
 					<Image
 					key={i}
@@ -65,7 +66,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 					fill
 					priority
 					className={`
-						object-cover transition-opacity duration-1000
+						object-contain transition-opacity duration-1000
 						${i === index ? "opacity-100" : "opacity-0"}
 					`}
 					/>
