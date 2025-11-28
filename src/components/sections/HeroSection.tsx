@@ -22,7 +22,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 	const heroImage = "/books/stoat-part2/sample-1.jpg"; // ←お好みで差し替え
 	
 	return (
-		<section className="pt-14 pb-12">
+		<section className="pt-４ pb-4">
 		<div className="mx-auto max-w-5xl px-4 text-center">
 		
 		{/* ▼ タイトル */}
@@ -62,7 +62,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		</div>
 		
 		{/* ▼ 横長ヒーロー画像 */}
-		<div className="mt-10">
+		<div className="mt-4">
 		<div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-3xl overflow-hidden shadow-none">
 		<Image
 		src={heroImage}
