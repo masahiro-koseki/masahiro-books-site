@@ -63,12 +63,12 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		
 		{/* ▼ 横長ヒーロー画像 */}
 		<div className="mt-10">
-		<div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-3xl overflow-hidden shadow-lg bg-neutral-200">
+		<div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-3xl overflow-hidden shadow-md bg-neutral-200">
 		<Image
 		src={heroImage}
 		alt="Hero background"
 		fill
-		className="object-cover"
+		className="object-contain"
 		priority
 		/>
 		{/* 軽いグラデーション（好みで削除可） */}
