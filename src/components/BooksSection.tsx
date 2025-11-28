@@ -18,7 +18,7 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 	if (!books || books.length === 0) return null;
 	
 	return (
-		<div className="mt-6 space-y-6">
+		<div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
 		{books.map((book) => {
 					// ▼ タイトル
 					const mainTitle =
