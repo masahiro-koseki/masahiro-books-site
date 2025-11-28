@@ -29,7 +29,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 	}, []);
 	
 	return (
-		<section className="w-full pt-20 pb-16 text-center">
+		<section className="w-full pt-10 pb-10 text-center">
 		{/* ▼ タイトル */}
 		<h1 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">
 		{texts.title}
@@ -67,7 +67,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 					fill
 					priority
 					className={`
-						object-contain transition-opacity duration-1000
+						object-contains transition-opacity duration-1000
 						${i === index ? "opacity-100" : "opacity-0"}
 					`}
 					/>
