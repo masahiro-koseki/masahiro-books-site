@@ -1,69 +1,75 @@
-// src/components/sections/HeroSection.tsx
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { BookOpen } from "lucide-react";
+import { useEffect, useState } from "react";
 
 type HeroTexts = {
 	title: string;
 	subtitle: string;
 	poem: string;
-	cta1: string; // 「本の一覧を見る」
-	cta2: string; // いまは使っていないが、型だけ残しておく
+	cta1: string;
 };
 
-type HeroSectionProps = {
-	texts: HeroTexts;
-	scrollTo: (id: string) => void;
-};
-
-export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
-	// ★ ヒーロー画像：お好みでパスを差し替え可
-	const heroImage = "/covers/hero-image-2.jpg";
+export default function HeroSection({ texts }: { texts: HeroTexts }) {
+	// --- ここからスライドショー ---
+	const sliderImages = [
+	"/covers/hero-slide-image-1.jpg", // ← Exploring Worlds
+	"/covers/hero-slide-image-2.jpg", // ← Reading His Own Adventure
+	];
+	
+	const [index, setIndex] = useState(0);
+	
+	useEffect(() => {
+			const timer = setInterval(() => {
+					setIndex((prev) => (prev + 1) % sliderImages.length);
+			}, 5000); // 5秒ごと切り替え
+			return () => clearInterval(timer);
+	}, []);
 	
 	return (
-		<section className="pt-4 pb-4">
-		<div className="mx-auto max-w-5xl px-4 text-center">
-		{/* タイトル */}
-		<h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-neutral-900">
+		<section className="w-full pt-20 pb-16 text-center">
+		{/* ▼ タイトル */}
+		<h1 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">
 		{texts.title}
 		</h1>
 		
-		{/* サブタイトル */}
-		<p className="mt-3 text-sm sm:text-base text-neutral-700">
-		{texts.subtitle}
+		{/* ▼ サブタイトル */}
+		<p className="mt-3 text-neutral-700">{texts.subtitle}</p>
+		
+		{/* ▼ 詩のような文 */}
+		<p className="mt-4 max-w-2xl mx-auto text-neutral-600 leading-relaxed">
+		{texts.poem}
 		</p>
 		
-		{/* リード文（poem） */}
-		<p
-		className="mt-4 text-sm sm:text-base leading-relaxed text-neutral-700"
-		dangerouslySetInnerHTML={{ __html: texts.poem }}
-		/>
-		
-		{/* ボタン：本の一覧へ 1つだけ */}
+		{/* ▼ CTA ボタン */}
 		<div className="mt-6 flex justify-center">
-		<Button
-		variant="outline"
-		onClick={() => scrollTo("book")}
-		className="rounded-full px-6 py-2 flex items-center gap-2 border-neutral-300 text-neutral-800"
+		<a
+		href="#book"
+		className="
+		rounded-full px-6 py-2 border border-neutral-300
+		text-neutral-800 text-sm shadow-sm hover:bg-neutral-50
+		"
 		>
-		<BookOpen className="h-4 w-4" />
 		{texts.cta1}
-		</Button>
+		</a>
 		</div>
 		
-		{/* 横長ヒーロー画像 */}
-		<div className="mt-6">
-		<div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-none">
-		<Image
-		src={heroImage}
-		alt="Hero preview"
-		fill
-		className="object-contain"
-		priority
-		/>
-		</div>
+		{/* ▼ スライド画像 */}
+		<div className="relative w-full mt-10 flex justify-center">
+		<div className="relative w-full max-w-4xl aspect-video overflow-hidden rounded-xl">
+		{sliderImages.map((src, i) => (
+					<Image
+					key={i}
+					src={src}
+					alt="Hero slide"
+					fill
+					priority
+					className={`
+						object-cover transition-opacity duration-1000
+						${i === index ? "opacity-100" : "opacity-0"}
+					`}
+					/>
+		))}
 		</div>
 		</div>
 		</section>
