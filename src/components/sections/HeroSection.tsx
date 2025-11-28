@@ -16,6 +16,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 	"/covers/hero-slide-image-1.jpg", // ← Exploring Worlds
 	"/covers/hero-slide-image-2.jpg", // ← Reading His Own Adventure
 	"/covers/hero-slide-image-3.jpg", // ← Reading His Own Adventure
+	"/covers/hero-slide-image-4.jpg", // ← Reading His Own Adventure
 	];
 	
 	const [index, setIndex] = useState(0);
