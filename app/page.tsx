@@ -649,7 +649,7 @@ const gallerySources = [
 
 
 		<Section id="home" className="pt-10 pb-6">
-		<HeroSection texts={t.hero} scrollTo={scrollTo} />
+		<HeroSection texts={t.hero}  />
 		</Section>
 		
 		{/* ---- BOOKS (All Works) ---- */}
