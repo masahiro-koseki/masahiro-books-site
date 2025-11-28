@@ -1,16 +1,16 @@
-// components/sections/HeroSection.tsx
+// src/components/sections/HeroSection.tsx
 "use client";
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Images } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 type HeroTexts = {
 	title: string;
 	subtitle: string;
 	poem: string;
-	cta1: string;
-	cta2: string;
+	cta1: string; // 「本の一覧を見る」
+	cta2: string; // いまは使っていないが、型だけ残しておく
 };
 
 type HeroSectionProps = {
@@ -19,49 +19,52 @@ type HeroSectionProps = {
 };
 
 export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
-	const heroImage = "/books/stoat-part2/sample-1.jpg"; // ←お好みで差し替え
+	// ★ ヒーロー画像：お好みでパスを差し替え可
+	const heroImage = "/books/stoat-part2/sample-1.jpg";
 	
 	return (
-		<section className="pt-４ pb-4">
+		<section className="pt-6 pb-6">
 		<div className="mx-auto max-w-5xl px-4 text-center">
-		
-		{/* ▼ タイトル */}
+		{/* タイトル */}
 		<h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-neutral-900">
 		{texts.title}
 		</h1>
 		
-		{/* ▼ サブタイトル */}
+		{/* サブタイトル */}
 		<p className="mt-3 text-sm sm:text-base text-neutral-700">
 		{texts.subtitle}
 		</p>
 		
-		{/* ▼ リード文（poem） */}
+		{/* リード文（poem） */}
 		<p
 		className="mt-4 text-sm sm:text-base leading-relaxed text-neutral-700"
 		dangerouslySetInnerHTML={{ __html: texts.poem }}
 		/>
 		
-		{/* ▼ ボタン1つ */}
+		{/* ボタン：本の一覧へ 1つだけ */}
 		<div className="mt-6 flex justify-center">
 		<Button
 		variant="outline"
 		onClick={() => scrollTo("book")}
-		className="rounded-full px-6 py-2 flex items-center gap-2 border-neutral-300 text-neutral-800">
+		className="rounded-full px-6 py-2 flex items-center gap-2 border-neutral-300 text-neutral-800"
+		>
 		<BookOpen className="h-4 w-4" />
 		{texts.cta1}
 		</Button>
 		</div>
 		
-		{/* ▼ 横長ヒーロー画像 */}
-		<div className="mt-4">
-		<div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-3xl overflow-hidden shadow-none">
+		{/* 横長ヒーロー画像 */}
+		<div className="mt-6">
+		<div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-md">
 		<Image
 		src={heroImage}
-		alt="Hero background"
+		alt="Hero preview"
 		fill
-		className="object-contain"
+		className="object-cover"
 		priority
 		/>
+		{/* ほんのり暗くするグラデーション（不要ならこの div を削除） */}
+		<div className="absolute inset-0 bg-gradient-to-t from-black/25 to-black/0" />
 		</div>
 		</div>
 		</div>
