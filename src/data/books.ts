@@ -230,60 +230,7 @@ export const BOOKS: Book[] = [
 	"/books/stoat-part3/sample-4.jpg",
 	],
 },
-
 // --- 塗り絵（Coloring Books） ---
-{
-	id: "castles",
-	title: "Castles of Japan – Enjoying Japanese Castles through Coloring",
-	titleJa: "CASTLES OF JAPAN — 日本の名城を楽しむ塗り絵ブック（英語版）",
-	category: "coloring",
-	amazonJp: "https://www.amazon.co.jp/dp/B0F89YXC6K",
-	amazonEn: "https://www.amazon.com/dp/B0F89YXC6K",
-	coverSrc: "/covers/castles.jpg",
-	
-	descriptionJa:
-	"日本各地の名城20ヶ所を、美しい線画イラストで楽しめる塗り絵ブックです。姫路城の優美な天守、竹田城跡の山城、名古屋城や松本城など、歴史に彩られた名城の姿をじっくりと塗りながら楽しめます。各城にまつわる歴史や逸話、武将のドラマ、城の構造や特徴など、読みものとしても楽しめる内容になっています。ストレス解消や創作時間としてはもちろん、日本文化・歴史の学びにも役立つ一冊です。",
-	description:
-	"Explore the timeless beauty and history of Japan’s most iconic castles through detailed, hand-drawn illustrations. This coloring book features 20 remarkable fortresses, each with its own stories of samurai warfare, strategic architecture, and cultural heritage. From the elegance of Himeji to the mountaintop scenery of Takeda Castle, every page invites you to relax, learn, and enjoy the art of Japanese castles.",
-	
-	specs: [
-	"判型：210mm × 210mm（正方形レイアウト）",
-	"ページ数：45ページ",
-	"言語：英語",
-	"内容：城の解説、豆知識、用語集を収録",
-	],
-	specsEn: [
-	"Format: 210mm × 210mm (8.3 × 8.3 inches, square)",
-	"Pages: 45 pages",
-	"Language: English ",
-	"Includes historical notes, trivia, and a glossary of castle architecture",
-	],
-	
-	features: [
-	"日本の名城20ヶ所を精密な線画で収録",
-	"歴史的背景、城の構造、逸話など読みもの要素も充実",
-	"天守、石垣、櫓、堀など、城の魅力を細やかに描写",
-	"ストレス解消・創作・学習に最適",
-	"日本文化・歴史が好きな方へのプレゼントにもおすすめ",
-	],
-	featuresEn: [
-	"20 highly detailed illustrations of famous Japanese castles",
-	"Historical background pages with legends, battles, and cultural insights",
-	"Includes glossary of architectural terms and trivia sections",
-	"Perfect for relaxation, creative exploration, and learning about Japanese history",
-	"Great for fans of castles, samurai culture, and Japanese art",
-	],
-	
-	difficulty: "塗りやすい難易度で、初心者から上級者まで楽しめます",
-	difficultyEn: "Suitable for beginners to advanced colorists",
-	
-	sampleImages: [
-	"/books/castle/sample-1.jpg",
-	"/books/castle/sample-2.jpg",
-	"/books/castle/sample-3.jpg",
-	"/books/castle/sample-4.jpg",
-	],
-},
 
 // Wild Birds Series 1〜7 を追加
 {
@@ -649,6 +596,61 @@ export const BOOKS: Book[] = [
 	"/books/wildbirds7/sample-2.jpg",
 	"/books/wildbirds7/sample-3.jpg",
 	"/books/wildbirds7/sample-4.jpg",
+	],
+},
+
+// --- 塗り絵（Coloring Books） ---
+
+{
+	id: "castles",
+	title: "Castles of Japan – Enjoying Japanese Castles through Coloring",
+	titleJa: "CASTLES OF JAPAN — 日本の名城を楽しむ塗り絵ブック（英語版）",
+	category: "coloring",
+	amazonJp: "https://www.amazon.co.jp/dp/B0F89YXC6K",
+	amazonEn: "https://www.amazon.com/dp/B0F89YXC6K",
+	coverSrc: "/covers/castles.jpg",
+	
+	descriptionJa:
+	"日本各地の名城20ヶ所を、美しい線画イラストで楽しめる塗り絵ブックです。姫路城の優美な天守、竹田城跡の山城、名古屋城や松本城など、歴史に彩られた名城の姿をじっくりと塗りながら楽しめます。各城にまつわる歴史や逸話、武将のドラマ、城の構造や特徴など、読みものとしても楽しめる内容になっています。ストレス解消や創作時間としてはもちろん、日本文化・歴史の学びにも役立つ一冊です。",
+	description:
+	"Explore the timeless beauty and history of Japan’s most iconic castles through detailed, hand-drawn illustrations. This coloring book features 20 remarkable fortresses, each with its own stories of samurai warfare, strategic architecture, and cultural heritage. From the elegance of Himeji to the mountaintop scenery of Takeda Castle, every page invites you to relax, learn, and enjoy the art of Japanese castles.",
+	
+	specs: [
+	"判型：210mm × 210mm（正方形レイアウト）",
+	"ページ数：45ページ",
+	"言語：英語",
+	"内容：城の解説、豆知識、用語集を収録",
+	],
+	specsEn: [
+	"Format: 210mm × 210mm (8.3 × 8.3 inches, square)",
+	"Pages: 45 pages",
+	"Language: English ",
+	"Includes historical notes, trivia, and a glossary of castle architecture",
+	],
+	
+	features: [
+	"日本の名城20ヶ所を精密な線画で収録",
+	"歴史的背景、城の構造、逸話など読みもの要素も充実",
+	"天守、石垣、櫓、堀など、城の魅力を細やかに描写",
+	"ストレス解消・創作・学習に最適",
+	"日本文化・歴史が好きな方へのプレゼントにもおすすめ",
+	],
+	featuresEn: [
+	"20 highly detailed illustrations of famous Japanese castles",
+	"Historical background pages with legends, battles, and cultural insights",
+	"Includes glossary of architectural terms and trivia sections",
+	"Perfect for relaxation, creative exploration, and learning about Japanese history",
+	"Great for fans of castles, samurai culture, and Japanese art",
+	],
+	
+	difficulty: "塗りやすい難易度で、初心者から上級者まで楽しめます",
+	difficultyEn: "Suitable for beginners to advanced colorists",
+	
+	sampleImages: [
+	"/books/castle/sample-1.jpg",
+	"/books/castle/sample-2.jpg",
+	"/books/castle/sample-3.jpg",
+	"/books/castle/sample-4.jpg",
 	],
 },
 
