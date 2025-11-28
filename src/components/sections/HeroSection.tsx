@@ -58,8 +58,10 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 		</div>
 		
 		{/* ▼ スライド画像 */}
-		<div className="relative w-full mt-10 flex justify-center">
-		<div className="relative w-full max-w-3xl aspect-video overflow-hidden rounded-xl bg-transparent">
+		<div className="mt-6 flex justify-center px-4">
+		<div
+		className="relative w-full max-w-2xl aspect-video overflow-hidden rounded-2xl border border-neutral-200 bg-white"
+		>
 		{sliderImages.map((src, i) => (
 					<Image
 					key={i}
@@ -67,6 +69,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 					alt="Hero slide"
 					fill
 					priority
+					sizes="(min-width: 1024px) 640px, 100vw"
 					className={`
 						object-contain transition-opacity duration-1000
 						${i === index ? "opacity-100" : "opacity-0"}
@@ -75,6 +78,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 		))}
 		</div>
 		</div>
+		
 		</section>
 	);
 }
