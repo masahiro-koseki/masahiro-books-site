@@ -23,7 +23,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 	const heroImage = "/books/stoat-part2/sample-1.jpg";
 	
 	return (
-		<section className="pt-6 pb-6">
+		<section className="pt-4 pb-4">
 		<div className="mx-auto max-w-5xl px-4 text-center">
 		{/* タイトル */}
 		<h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-neutral-900">
@@ -42,7 +42,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		/>
 		
 		{/* ボタン：本の一覧へ 1つだけ */}
-		<div className="mt-6 flex justify-center">
+		<div className="mt-4 flex justify-center">
 		<Button
 		variant="outline"
 		onClick={() => scrollTo("book")}
@@ -54,17 +54,15 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		</div>
 		
 		{/* 横長ヒーロー画像 */}
-		<div className="mt-6">
-		<div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-md">
+		<div className="mt-4">
+		<div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-xl overflow-hidden shadow-none">
 		<Image
 		src={heroImage}
 		alt="Hero preview"
 		fill
-		className="object-cover"
+		className="object-contain"
 		priority
 		/>
-		{/* ほんのり暗くするグラデーション（不要ならこの div を削除） */}
-		<div className="absolute inset-0 bg-gradient-to-t from-black/25 to-black/0" />
 		</div>
 		</div>
 		</div>
