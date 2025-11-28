@@ -68,7 +68,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		src={heroImage}
 		alt="Hero background"
 		fill
-		className="object-cover"
+		className="object-contain"
 		priority
 		/>
 		</div>
