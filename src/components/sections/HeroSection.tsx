@@ -58,25 +58,23 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 		</div>
 		
 		{/* ▼ スライド画像 */}
-		<div className="mt-8 flex justify-center px-4">
-		{/* 外側のカード（大きめの角丸） */}
-		<div className="w-full max-w-3xl rounded-3xl bg-white shadow-sm p-4">
-		{/* 内側：画像をクリップする角丸枠 */}
-		<div className="relative w-full aspect-video overflow-hidden rounded-2xl">
+		<div className="relative w-full mt-8 flex justify-center">
+		<div className="w-full max-w-3xl">
 		{sliderImages.map((src, i) => (
 					<Image
 					key={i}
 					src={src}
 					alt="Hero slide"
-					fill
-					priority
+					width={1200}   // 元画像の比率に近い値（16:9 なら 1200x675 など）
+					height={675}
+					priority={i === 0}
 					className={`
-						object-contain rounded-2xl transition-opacity duration-1000
-						${i === index ? "opacity-100" : "opacity-0"}
+						w-full h-auto rounded-3xl object-contain
+						transition-opacity duration-1000
+						${i === index ? "opacity-100 relative" : "opacity-0 absolute inset-0"}
 					`}
 					/>
 		))}
-		</div>
 		</div>
 		</div>
 		
