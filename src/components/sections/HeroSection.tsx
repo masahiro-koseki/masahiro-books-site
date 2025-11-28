@@ -70,9 +70,8 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 					alt="Hero slide"
 					fill
 					priority
-					sizes="(min-width: 1024px) 720px, 100vw"
 					className={`
-						object-contain transition-opacity duration-1000
+						object-contain rounded-2xl transition-opacity duration-1000
 						${i === index ? "opacity-100" : "opacity-0"}
 					`}
 					/>
