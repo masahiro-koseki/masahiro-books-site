@@ -39,9 +39,10 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 		<p className="mt-3 text-neutral-700">{texts.subtitle}</p>
 		
 		{/* ▼ 詩のような文 */}
-		<p className="mt-4 max-w-2xl mx-auto text-neutral-600 leading-relaxed">
-		{texts.poem}
-		</p>
+		<p
+		className="text-neutral-600"
+		dangerouslySetInnerHTML={{ __html: texts.poem }}
+		/>
 		
 		{/* ▼ CTA ボタン */}
 		<div className="mt-6 flex justify-center">
