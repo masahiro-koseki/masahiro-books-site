@@ -63,7 +63,7 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		
 		{/* ▼ 横長ヒーロー画像 */}
 		<div className="mt-10">
-		<div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-3xl overflow-hidden shadow-md">
+		<div className="relative mx-auto max-w-3xl aspect-[16/9] rounded-3xl overflow-hidden shadow-none">
 		<Image
 		src={heroImage}
 		alt="Hero background"
