@@ -52,6 +52,72 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 						<article
 						key={book.id}
 						className={
-							"flex flex-col md:flex-row h-full gap-6 rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm transition-all duration-500 ease-out hover:shadow-md " +
-							(mounted
-								? "opacity-100 translate-y-0"
+							"flex flex-col md:flex-row h-full gap-6 rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-500 ease-out " +
+							(mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3")
+						}
+						style={{ transitionDelay: `${index * 80}ms` }}
+						>
+						{/* 左：タイトル＋テキスト */}
+						<div className="flex-1">
+						<h3 className="text-base md:text-lg font-semibold text-neutral-900">
+						{mainTitle}
+						</h3>
+						
+						{/* サブタイトルは表示しない */}
+						
+						{shortDesc && (
+								<p className="mt-3 text-sm text-neutral-600">{shortDesc}</p>
+						)}
+						
+						{/* ボタン類 */}
+						<div className="mt-4 flex flex-wrap gap-2 text-xs">
+						{book.amazonJp && (
+								<a
+								href={book.amazonJp}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+								>
+								Amazon.co.jp
+								</a>
+						)}
+						
+						{book.amazonEn && (
+								<a
+								href={book.amazonEn}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+								>
+								Amazon.com
+								</a>
+						)}
+						
+						<Link
+						href={`/books/${book.id}`}
+						className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+						>
+						{detailLabel}
+						</Link>
+						</div>
+						</div>
+						
+						{/* 右：カバー画像 */}
+						{book.coverSrc && (
+								<div className="w-full md:w-48 lg:w-56 shrink-0">
+								<div className="relative aspect-square rounded-xl overflow-hidden bg-neutral-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+								<Image
+								src={book.coverSrc}
+								alt={mainTitle}
+								fill
+								className="object-cover"
+								/>
+								</div>
+								</div>
+						)}
+						</article>
+					);
+		})}
+		</div>
+	);
+}
