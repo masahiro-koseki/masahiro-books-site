@@ -26,14 +26,7 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 					? book.titleJa ?? book.title
 					: book.title || book.titleJa || "";
 					
-					const subTitle =
-					lang === "ja"
-					? book.title && book.title !== mainTitle
-					? book.title
-					: undefined
-					: book.titleJa && book.titleJa !== mainTitle
-					? book.titleJa
-					: undefined;
+					const subTitle = undefined;
 					
 					// ▼ 説明文（日本語と英語で長さを変える）
 					const fullDesc =
@@ -58,9 +51,9 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 						{mainTitle}
 						</h3>
 						
-						{subTitle && (
-								<p className="mt-1 text-xs text-neutral-500">{subTitle}</p>
-						)}
+						//{subTitle && (
+						//		<p className="mt-1 text-xs text-neutral-500">{subTitle}</p>
+						//)}
 						
 						{shortDesc && (
 								<p className="mt-3 text-sm text-neutral-600">{shortDesc}</p>
