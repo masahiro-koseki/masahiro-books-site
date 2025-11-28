@@ -71,8 +71,6 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		className="object-cover"
 		priority
 		/>
-		{/* 軽いグラデーション（好みで削除可） */}
-		<div className="absolute inset-0 bg-gradient-to-t from-black/30 to-black/0" />
 		</div>
 		</div>
 		</div>
