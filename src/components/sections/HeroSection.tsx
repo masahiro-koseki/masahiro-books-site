@@ -41,23 +41,14 @@ export default function HeroSection({ texts, scrollTo }: HeroSectionProps) {
 		dangerouslySetInnerHTML={{ __html: texts.poem }}
 		/>
 		
-		{/* ▼ ボタン2つ */}
-		<div className="mt-6 flex flex-wrap justify-center gap-4">
-		<Button
-		onClick={() => scrollTo("book")}
-		className="rounded-full px-6 py-2 flex items-center gap-2"
-		>
-		<BookOpen className="h-4 w-4" />
-		{texts.cta1}
-		</Button>
-		
+		{/* ▼ ボタン1つ */}
+		<div className="mt-6 flex justify-center">
 		<Button
 		variant="outline"
-		onClick={() => scrollTo("portfolio")}
-		className="rounded-full px-6 py-2 flex items-center gap-2 border-neutral-300 text-neutral-800"
-		>
-		<Images className="h-4 w-4" />
-		{texts.cta2}
+		onClick={() => scrollTo("book")}
+		className="rounded-full px-6 py-2 flex items-center gap-2 border-neutral-300 text-neutral-800">
+		<BookOpen className="h-4 w-4" />
+		{texts.cta1}
 		</Button>
 		</div>
 		
