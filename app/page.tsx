@@ -332,25 +332,25 @@ export default function Page() {
 		body_ja:
 		"絵本・塗り絵・写真集を横断して紹介できる新デザインにリニューアルしました。Hero画像のスライドや2カラムレイアウトを追加し、より見やすい構成になりました。",
 		body_en:
-		"The website has been redesigned with a new layout that showcases picture books, coloring books, and photo books in a unified format. A new two-column Hero section with slideshow has been added for better visual presentation."
+		"The website has been redesigned with a new layout showcasing picture books, coloring books, and photo books in a unified format. A new two-column Hero section with slideshow has also been added."
 	},
 	{
 		date: "2025-11-20",
-		title_ja: "「オコジョの山のぼうけん」特設ページ公開",
-		title_en: "Special Page for “Stoat’s Big Mountain Adventure” Released",
+		title_ja: "各書籍の内容紹介ページを作成",
+		title_en: "Individual Book Introduction Pages Added",
 		body_ja:
-		"オコジョシリーズの紹介ページを公開しました。キャラクター紹介、制作の背景、各巻のあらすじを掲載しています。",
+		"これまで制作した絵本、塗り絵シリーズ、写真集について、それぞれ内容紹介ページを作成しました。各書籍の特徴やテーマが分かりやすく確認できます。",
 		body_en:
-		"A dedicated page for the “Stoat’s Big Mountain Adventure” series is now available. It includes character introductions, behind-the-scenes notes, and summaries of each volume."
+		"Introduction pages for each book—including picture books, coloring books, and photo books—have been created. Visitors can now easily explore the themes and features of each title."
 	},
 	{
 		date: "2025-11-10",
-		title_ja: "野鳥・日本の城 塗り絵シリーズ 更新",
-		title_en: "Bird & Castle Coloring Book Series Updated",
+		title_ja: "絵本や塗り絵などの書籍を紹介するWebsiteの制作開始",
+		title_en: "Website Development Started for Showcasing Books",
 		body_ja:
-		"野鳥シリーズ Vol.1〜7 と日本の城塗り絵シリーズの紹介ページを更新しました。各巻のテーマや内容が分かりやすくなりました。",
+		"絵本や塗り絵、写真集などをまとめて紹介できる新しいWebsiteの制作を開始。作品ごとのページ構成やデザインの検討を進めています。",
 		body_en:
-		"The Wild Bird Coloring Book Vol.1–7 and Japanese Castle Coloring Book series pages have been updated with clearer descriptions of themes and contents."
+		"Development has begun on a new website designed to showcase picture books, coloring books, and photo books in one place. Work is underway on organizing layouts and refining each book’s introduction page."
 	}
 	] as const;
 	
