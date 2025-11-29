@@ -533,9 +533,6 @@ export default function Page() {
 		<button onClick={() => scrollTo("book")} className="hover:opacity-70">
 		{t.nav.book}
 		</button>
-		<Link href={mountainsHref} className="hover:opacity-70">
-		{lang === "ja" ? "山の紹介" : "Mountains"}
-		</Link>		
 		<button onClick={() => scrollTo("about")} className="hover:opacity-70">
 		{t.nav.about}
 		</button>
@@ -576,60 +573,44 @@ export default function Page() {
 		{/* --- モバイルメニュー本体 --- */}
 		{menuOpen && (
 				<nav className="md:hidden border-t border-neutral-300 bg-white text-sm">
-				<button
-				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				<button className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
 				onClick={() => scrollTo("home")}
 				>
 				{t.nav.home}
 				</button>
-				<button
-				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				
+				<button className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
 				onClick={() => scrollTo("book")}
 				>
 				{t.nav.book}
 				</button>
 				
-				<Link
-				href={mountainsHref}
-				className="block w-full text-left px-4 py-2 hover:bg-neutral-100"
-				onClick={() => setMenuOpen(false)}
-				>
-				{lang === "ja" ? "山の紹介" : "Mountains"}
-				</Link>
-				
-				<button
-				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				<button className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
 				onClick={() => scrollTo("about")}
 				>
 				{t.nav.about}
 				</button>
-				<button
-				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				
+				<button className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
 				onClick={() => scrollTo("news")}
 				>
 				{t.nav.news}
 				</button>
-				<button
-				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				
+				<button className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
 				onClick={() => scrollTo("contact")}
 				>
 				{t.nav.contact}
 				</button>
 				
-				{/* 言語切替（モバイル用） */}
+				{/* 言語切替 */}
 				<div className="border-t border-neutral-200 flex gap-2 px-4 py-3">
-				<button
-				className={`px-3 py-1 rounded-full ${
-						lang === "ja" ? "bg-neutral-900 text-white" : "bg-neutral-200"
-				}`}
+				<button className={`px-3 py-1 rounded-full ${lang === "ja" ? "bg-neutral-900 text-white" : "bg-neutral-200"}`}
 				onClick={() => changeLang("ja")}
 				>
 				JP
 				</button>
-				<button
-				className={`px-3 py-1 rounded-full ${
-						lang === "en" ? "bg-neutral-900 text-white" : "bg-neutral-200"
-				}`}
+				<button className={`px-3 py-1 rounded-full ${lang === "en" ? "bg-neutral-900 text-white" : "bg-neutral-200"}`}
 				onClick={() => changeLang("en")}
 				>
 				EN
