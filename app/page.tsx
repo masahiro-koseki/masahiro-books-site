@@ -326,39 +326,31 @@ export default function Page() {
 	
 	const NEWS_ITEMS = [
 	{
-		date: "2025-11-21",
-		title_ja: "Websiteに山の紹介ページ追加",
-		title_en: "Mountain Introduction Pages Added to Website",
-		body_ja: "写真集に登場する主な山々の紹介ページを日本語版と訪日客または海外の方のために英語版も作成しました。",
-		body_en: "New mountain introduction pages have been added to the website, featuring detailed information in both Japanese and English for domestic visitors and international audiences."
+		date: "2025-11-28",
+		title_ja: "Websiteを全面リニューアル",
+		title_en: "Website Fully Updated",
+		body_ja:
+		"絵本・塗り絵・写真集を横断して紹介できる新デザインにリニューアルしました。Hero画像のスライドや2カラムレイアウトを追加し、より見やすい構成になりました。",
+		body_en:
+		"The website has been redesigned with a new layout that showcases picture books, coloring books, and photo books in a unified format. A new two-column Hero section with slideshow has been added for better visual presentation."
 	},
 	{
-		date: "2025-11-16",
-		title_ja: "Website完成・公開",
-		title_en: "Website Completed & Officially Launched",
-		body_ja: "写真集用のWebsiteの制作が完了。ドメインも取得し正式に公開。",
-		body_en: "The official website for the photo book has been completed and is now live with the newly acquired domain."
+		date: "2025-11-20",
+		title_ja: "「オコジョの山のぼうけん」特設ページ公開",
+		title_en: "Special Page for “Stoat’s Big Mountain Adventure” Released",
+		body_ja:
+		"オコジョシリーズの紹介ページを公開しました。キャラクター紹介、制作の背景、各巻のあらすじを掲載しています。",
+		body_en:
+		"A dedicated page for the “Stoat’s Big Mountain Adventure” series is now available. It includes character introductions, behind-the-scenes notes, and summaries of each volume."
 	},
 	{
-		date: "2025-11-08",
-		title_ja: "写真集完成・販売開始",
-		title_en: "Photo Book Completed & Now Available",
-		body_ja: "候補写真や各章の冒頭と終わりのバランス等も確認し、ようやく写真集が完成。Amazonサイトで販売開始。",
-		body_en: "After reviewing the image selections and adjusting the structure of each chapter, the photo book has finally been completed. It is now available for purchase on Amazon."
-	},
-	{
-		date: "2025-10-25",
-		title_ja: "Website制作開始",
-		title_en: "Website Development Began",
-		body_ja: "写真集販売に合わせて公開できるように写真集用のWebsiteの制作を開始。",
-		body_en: "Work began on developing the website to accompany the release of the photo book."
-	},
-	{
-		date: "2025-06-06",
-		title_ja: "写真集制作開始",
-		title_en: "Photo Book Production Started",
-		body_ja: "撮りためた写真を使って焼石岳・栗駒・早池峰等の岩手の山や自然の写真を収録した写真集の制作を開始。",
-		body_en: "Production of the photo book began, featuring photographs of Mt. Yakeishi, Mt. Kurikoma, Mt. Hayachine, and other natural landscapes of Iwate captured over the years."
+		date: "2025-11-10",
+		title_ja: "野鳥・日本の城 塗り絵シリーズ 更新",
+		title_en: "Bird & Castle Coloring Book Series Updated",
+		body_ja:
+		"野鳥シリーズ Vol.1〜7 と日本の城塗り絵シリーズの紹介ページを更新しました。各巻のテーマや内容が分かりやすくなりました。",
+		body_en:
+		"The Wild Bird Coloring Book Vol.1–7 and Japanese Castle Coloring Book series pages have been updated with clearer descriptions of themes and contents."
 	}
 	] as const;
 	
