@@ -95,7 +95,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		
 		{/* ▼ 右側：スライド画像＋矢印＋ドット */}
 		<div className="md:justify-self-end w-full">
-		<div className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-3xl overflow-hidden bg-white shadow-md">
+		<div className="relative w-full max-w-xl mx-auto aspect-[3/2] rounded-3xl overflow-hidden bg-white shadow-md">
 		{/* スライド画像（フェード切り替え） */}
 		{sliderImages.map((src, i) => (
 					<Image
