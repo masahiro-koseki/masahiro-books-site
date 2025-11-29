@@ -861,7 +861,9 @@ export default function Page() {
 			</button>
 			<button onClick={() => changeLang("en")} className={`px-2 py-1 rounded-full ${lang === "en" ? "bg-neutral-900 text-white" : "bg-neutral-100"}`}>
 			{t.footer.en}
-			</button>
+		</button>
+		{/* 言語切り替えの横のミニオコジョ */}
+		<OkojoLogo className="h-6 w-6 text-neutral-700" />
 			</div>
 			</div>
 			<div className="flex items-center gap-4 mt-4 text-neutral-600 text-sm">
