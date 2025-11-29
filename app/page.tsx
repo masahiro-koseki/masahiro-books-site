@@ -15,6 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { GalleryVerticalEnd, BookOpen, Camera, Mail, ExternalLink, ArrowRight, MapPin, Calendar, Globe } from "lucide-react";
+import { OkojoLogo } from "@/components/OkojoLogo";
 import Link from "next/link";
 
 import BooksSection from "@/components/BooksSection";
@@ -521,7 +522,7 @@ export default function Page() {
 		
 		{/* 左：ロゴ */}
 		<div className="flex items-center gap-2 font-semibold">
-		<GalleryVerticalEnd className="h-5 w-5" />
+		<OkojoLogo className="h-6 w-6" />
 		<span>Masahiro Koseki</span>
 		</div>
 		
