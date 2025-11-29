@@ -74,7 +74,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		/>
 		
 		{/* ▼ CTA ＋ オコジョ行 */}
-		<div className="pt-2 flex items-center gap-4">
+		<div className="pt-2 flex items-center justify-center gap-4">
 		<a
 		href="#book"
 		className="inline-block rounded-full px-6 py-2 border border-neutral-300
@@ -84,7 +84,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		</a>
 		
 		{/* CTA 横にちょこんとオコジョ */}
-		<OkojoLogo className="hidden sm:block h-10 w-10 text-neutral-700" />
+		<OkojoLogo className="h-10 w-10 text-neutral-700" />
 		</div>
 		</div>
 		
