@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { GalleryVerticalEnd, BookOpen, Camera, Mail, ExternalLink, ArrowRight, MapPin, Calendar, Globe } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 import BooksSection from "@/components/BooksSection";
 import { BOOKS } from "@/data/books";
