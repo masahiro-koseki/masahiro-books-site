@@ -2,120 +2,108 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { Book } from "@/data/books";
-import { useEffect, useState } from "react";
 
-type BooksSectionProps = {
-	books: Book[];
-	lang: "ja" | "en";
+type Book = {
+	id: string;
+	title_ja: string;
+	title_en: string;
+	desc_ja: string;
+	desc_en: string;
+	cover: string;
+	amazon_jp?: string;
+	amazon_en?: string;
 };
 
-function truncate(text: string, max: number) {
-	if (!text) return "";
-	if (text.length <= max) return text;
-	return text.slice(0, max) + "…";
-}
+type BooksSectionProps = {
+	lang: "ja" | "en";
+	books: Book[];
+};
 
-export default function BooksSection({ books, lang }: BooksSectionProps) {
-	if (!books || books.length === 0) return null;
-	
-	// ▼ マウント時アニメーション用フラグ
-	const [mounted, setMounted] = useState(false);
-	
-	useEffect(() => {
-			setMounted(true);
-	}, []);
-	
+export default function BooksSection({ lang, books }: BooksSectionProps) {
 	return (
-		<div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-		{books.map((book, index) => {
-					// ▼ メインタイトル（言語に応じて切り替え）
-					const mainTitle =
-					lang === "ja"
-					? book.titleJa ?? book.title
-					: book.title || book.titleJa || "";
-					
-					// ▼ 説明文（日本語／英語）
-					const fullDesc =
-					lang === "ja"
-					? book.descriptionJa ?? book.description
-					: book.description ?? book.descriptionJa;
-					
-					// ★ ここで文字数を調整できます
-					const maxLength = lang === "ja" ? 120 : 190;
-					const shortDesc = fullDesc ? truncate(fullDesc, maxLength) : "";
-					
-					// ▼ ボタン文言
-					const detailLabel = lang === "ja" ? "詳細を見る" : "View details";
+		<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+		{books.map((book) => {
+					const title = lang === "ja" ? book.title_ja : book.title_en;
+					const desc = lang === "ja" ? book.desc_ja : book.desc_en;
 					
 					return (
-						<article
+						<div
 						key={book.id}
-						className={
-							"flex flex-col md:flex-row h-full gap-6 rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-500 ease-out " +
-							(mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3")
-						}
-						style={{ transitionDelay: `${index * 80}ms` }}
+						className="
+						group rounded-2xl overflow-hidden bg-white
+						shadow-md hover:shadow-xl transition-shadow duration-300
+						border border-neutral-200
+						"
 						>
-						{/* 左：タイトル＋テキスト */}
-						<div className="flex-1">
-						<h3 className="text-base md:text-lg font-semibold text-neutral-900">
-						{mainTitle}
+						{/* --- カバー画像 --- */}
+						<div className="relative w-full aspect-[3/4] overflow-hidden bg-neutral-100">
+						<Image
+						src={book.cover}
+						alt={title}
+						fill
+						className="
+						object-cover transition-transform duration-500
+						group-hover:scale-[1.03]
+						"
+						/>
+						</div>
+						
+						{/* --- テキスト部分 --- */}
+						<div className="p-5 space-y-3">
+						<h3 className="font-semibold text-lg text-neutral-900 tracking-tight leading-snug">
+						{title}
 						</h3>
 						
-						{/* サブタイトルは表示しない */}
+						<p className="text-neutral-600 text-sm leading-relaxed line-clamp-3">
+						{desc}
+						</p>
 						
-						{shortDesc && (
-								<p className="mt-3 text-sm text-neutral-600">{shortDesc}</p>
-						)}
-						
-						{/* ボタン類 */}
-						<div className="mt-4 flex flex-wrap gap-2 text-xs">
-						{book.amazonJp && (
+						{/* --- Amazonリンク --- */}
+						<div className="pt-2 flex flex-col gap-2 text-sm">
+						{book.amazon_jp && (
 								<a
-								href={book.amazonJp}
+								href={book.amazon_jp}
 								target="_blank"
-								rel="noopener noreferrer"
-								className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+								className="
+								inline-flex items-center justify-center
+								rounded-full border border-neutral-300 px-3 py-1.5
+								text-neutral-800 hover:bg-neutral-50 transition
+								"
 								>
-								Amazon.co.jp
+								{lang === "ja" ? "Amazonで見る（日本）" : "Amazon Japan"}
 								</a>
 						)}
 						
-						{book.amazonEn && (
+						{book.amazon_en && (
 								<a
-								href={book.amazonEn}
+								href={book.amazon_en}
 								target="_blank"
-								rel="noopener noreferrer"
-								className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+								className="
+								inline-flex items-center justify-center
+								rounded-full border border-neutral-300 px-3 py-1.5
+								text-neutral-800 hover:bg-neutral-50 transition
+								"
 								>
-								Amazon.com
+								{lang === "ja" ? "Amazonで見る（海外）" : "Amazon US / Global"}
 								</a>
 						)}
+						</div>
 						
+						{/* --- 詳細ページボタン --- */}
+						<div className="pt-2">
 						<Link
 						href={`/books/${book.id}`}
-						className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+						className="
+						inline-block rounded-full border border-neutral-300
+						px-4 py-2 text-sm text-neutral-700
+						hover:bg-neutral-100 transition
+						"
 						>
-						{detailLabel}
+						{lang === "ja" ? "詳しく見る" : "View Details"}
 						</Link>
 						</div>
 						</div>
-						
-						{/* 右：カバー画像 */}
-						{book.coverSrc && (
-								<div className="w-full md:w-48 lg:w-56 shrink-0">
-								<div className="relative aspect-square rounded-xl overflow-hidden bg-neutral-100 shadow-sm hover:shadow-md transition-shadow duration-300">
-								<Image
-								src={book.coverSrc}
-								alt={mainTitle}
-								fill
-								className="object-cover"
-								/>
-								</div>
-								</div>
-						)}
-						</article>
+						</div>
 					);
 		})}
 		</div>
