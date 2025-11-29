@@ -61,7 +61,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		<div className="relative text-left space-y-4">
 				
 		{/* 通常テキスト */}
-		<h1 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">
+		<h1 className="text-3xl md:text-3xl font-bold text-neutral-900 leading-tight">
 		{t.title}
 		</h1>
 		
