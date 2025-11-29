@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { OkojoLogo } from "@/components/OkojoLogo";
+import { OkojoLogo } from "@/public/okojo-illust.png";
 
 type HeroTexts = {
 	title: string;
