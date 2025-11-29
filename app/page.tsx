@@ -847,11 +847,7 @@ export default function Page() {
 					total={gallerySources[lbCat].length}
 					/>
 			)}
-		
-		<div className="mt-20 mb-10 flex justify-center">
-		<OkojoLogo className="h-32 w-32 opacity-80" />
-		</div>
-
+			
 			<footer className="border-t">
 			<Section id="footer" className="section-spacing py-10">
 			<div className="flex flex-col sm:flex-row items-center justify-between gap-4">
