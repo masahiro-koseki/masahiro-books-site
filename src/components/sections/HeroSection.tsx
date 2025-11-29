@@ -60,12 +60,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		<div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 md:items-center px-4">
 		{/* ▼ 左側：タイトル・文章・ボタン */}
 		<div className="relative text-left space-y-4">
-		
-		{/* 背景の大型オコジョ */}
-		<OkojoLogo
-		className="absolute -left-4 -top-6 h-48 w-48 opacity-10 pointer-events-none"
-		/>
-		
+				
 		{/* 通常テキスト */}
 		<h1 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">
 		{t.title}
@@ -86,6 +81,9 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		>
 		{t.cta1}
 		</a>
+		{/* CTA横のミニオコジョ */}
+		<OkojoLogo className="hidden sm:block h-10 w-10 text-neutral-700" />
+
 		</div>
 		</div>
 		
