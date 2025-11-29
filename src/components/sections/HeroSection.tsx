@@ -92,7 +92,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 					priority={i === 0}
 					className={`
 						absolute inset-0 w-full h-full
-						object-contain rounded-3xl
+						object-cover rounded-3xl
 						transition-opacity duration-1000
 						${i === index ? "opacity-100" : "opacity-0"}
 					`}
