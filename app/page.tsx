@@ -53,91 +53,9 @@ const H2 = ({ children }: { children: React.ReactNode }) => (
 	</motion.h2>
 );
 
-const Lightbox = ({
-		src,
-		alt,
-		caption,
-		onPrev,
-		onNext,
-		onClose,
-		index,
-		total,
-	}: {
-		src: string;
-		alt: string;
-		caption: string;
-		onPrev: () => void;
-		onNext: () => void;
-		onClose: () => void;
-		index: number;
-		total: number;
-}) => {
-	if (!src) return null;
-	
-	return (
-		<div
-		className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm p-4 sm:p-6 flex"
-		role="dialog"
-		aria-modal="true"
-		onClick={(e) => {
-				if (e.target === e.currentTarget) onClose();
-		}}
-		style={{ paddingBottom: "max(24px, env(safe-area-inset-bottom, 24px))" }}
-		>
-		<button
-		aria-label="Close"
-		onClick={onClose}
-		className="absolute top-4 right-4 sm:top-5 sm:right-5 text-white/90 bg-white/10 hover:bg-white/20 rounded-full px-3 py-1"
-		>
-		×
-		</button>
-		
-		<div
-		className="m-auto w-full max-w-5xl"
-		onClick={(e) => e.stopPropagation()}
-		>
-		<div className="w-full rounded-xl overflow-hidden bg-black grid place-items-center">
-		<img
-		src={src}
-		alt={alt || "image"}
-		className="max-h-[calc(100vh-260px)] w-auto h-auto object-contain"
-		draggable={false}
-		/>
-		</div>
-		
-		<div className="mt-3 px-3 py-2 rounded-lg bg-white/10 text-white/90 text-sm leading-relaxed">
-		{caption}
-		</div>
-		
-		<div className="mt-4 flex items-center justify-between gap-3 text-white">
-		<button
-		onClick={onPrev}
-		className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20"
-		>
-		←
-		</button>
-		<div className="text-sm select-none">
-		{index + 1} / {total}
-		</div>
-		<button
-		onClick={onNext}
-		className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20"
-		>
-		→
-		</button>
-		</div>
-		</div>
-		</div>
-	);
-};
-
 
 export default function Page() {
 	const [lang, setLang] = useState<Lang>("ja");
-	const mountainsHref = lang === "ja" ? "/mountains" : "/en/mountains";
-	const [lbOpen, setLbOpen] = useState(false);
-	const [lbCat, setLbCat] = useState(0);
-	const [lbIndex, setLbIndex] = useState(0);
 	
 	const pictureBooks = BOOKS.filter((b) => b.category === "picture-book");
 	const coloringBooks = BOOKS.filter((b) => b.category === "coloring");
@@ -148,22 +66,6 @@ export default function Page() {
 	"all" | "picture" | "coloring" | "photo"
 	>("all");
 	
-	useEffect(() => {
-			if (!lbOpen) return;
-			const onKey = (e: KeyboardEvent) => {
-				if (e.key === "Escape") closeGallery();
-				if (e.key === "ArrowRight") nextImg();
-				if (e.key === "ArrowLeft")  prevImg();
-			};
-			window.addEventListener("keydown", onKey);
-			const root = document.documentElement;
-			const prev = root.style.overflow;
-			root.style.overflow = "hidden";
-			return () => {
-				window.removeEventListener("keydown", onKey);
-				root.style.overflow = prev;
-			};
-	}, [lbOpen]);
 	
 	// URL の ?lang= を優先して言語を決定し、なければ localStorage から復元
 	useEffect(() => {
@@ -372,19 +274,7 @@ export default function Page() {
 		setMenuOpen(false);
 	};
 	
-	
-	const openGallery = (cat: number, index = 0) => {
-		if (!Array.isArray(gallerySources[cat])) return;
-		const max = gallerySources[cat].length || 0;
-		const safeIndex = Math.min(Math.max(index, 0), Math.max(0, max - 1));
-		setLbCat(cat);
-		setLbIndex(safeIndex);
-		setLbOpen(true);
-	};
-	const closeGallery = () => setLbOpen(false);
-	const nextImg = () => setLbIndex((i) => (i + 1) % gallerySources[lbCat].length);
-	const prevImg = () => setLbIndex((i) => (i - 1 + gallerySources[lbCat].length) % gallerySources[lbCat].length);
-	
+		
 	
 	return (
 		<div className="min-h-screen bg-white text-neutral-900">
@@ -683,18 +573,6 @@ export default function Page() {
 			</div>
 			</Section>
 			
-			{lbOpen && Array.isArray(gallerySources[lbCat]) && gallerySources[lbCat][lbIndex] && (
-					<Lightbox
-					src={gallerySources[lbCat][lbIndex]}
-					alt={galleryMeta[lbCat]?.alts?.[lbIndex] || "image"}
-					caption={(lang === "ja" ? galleryMeta[lbCat]?.jp?.[lbIndex] : galleryMeta[lbCat]?.en?.[lbIndex]) || ""}
-					onPrev={prevImg}
-					onNext={nextImg}
-					onClose={closeGallery}
-					index={lbIndex}
-					total={gallerySources[lbCat].length}
-					/>
-			)}
 			
 			<footer className="border-t">
 			<Section id="footer" className="section-spacing py-10">
