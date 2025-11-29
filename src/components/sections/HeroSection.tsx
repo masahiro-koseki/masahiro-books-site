@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { OkojoLogo } from "@/public/okojo-logo.png";
 
 type HeroTexts = {
 	title: string;
@@ -83,10 +82,16 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		{t.cta1}
 		</a>
 		
-		{/* CTA 横にちょこんとオコジョ */}
-		<OkojoLogo className="h-10 w-10 text-neutral-700" />
+		{/* CTA 横にオコジョ（PNG 印刷版） */}
+		<Image
+		src="/okojo-logo.png"
+		alt="Okojo logo"
+		width={40}
+		height={40}
+		className="opacity-90"
+		/>
 		</div>
-		</div>
+	</div>
 		
 		{/* ▼ 右側：スライド画像＋矢印＋ドット */}
 		<div className="md:justify-self-end w-full">
