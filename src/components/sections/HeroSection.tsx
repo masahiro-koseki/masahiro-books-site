@@ -10,13 +10,24 @@ type HeroTexts = {
 	cta1: string;
 };
 
-export default function HeroSection({ texts }: { texts: HeroTexts }) {
-	// --- ここからスライドショー ---
+type HeroSectionProps = {
+	texts?: HeroTexts; // ← optional にする
+};
+
+const FALLBACK_TEXTS: HeroTexts = {
+	title: "",
+	subtitle: "",
+	poem: "",
+	cta1: "",
+};
+
+export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps) {
+	// --- スライドショー ---
 	const sliderImages = [
-	"/covers/hero-slide-image-1.jpg", // ← Exploring Worlds
-	"/covers/hero-slide-image-2.jpg", // ← Reading His Own Adventure
-	"/covers/hero-slide-image-3.jpg", // ← Reading His Own Adventure
-	"/covers/hero-slide-image-4.jpg", // ← Reading His Own Adventure
+	"/covers/hero-slide-image-1.jpg",
+	"/covers/hero-slide-image-2.jpg",
+	"/covers/hero-slide-image-3.jpg",
+	"/covers/hero-slide-image-4.jpg",
 	];
 	
 	const [index, setIndex] = useState(0);
@@ -24,42 +35,54 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 	useEffect(() => {
 			const timer = setInterval(() => {
 					setIndex((prev) => (prev + 1) % sliderImages.length);
-			}, 5000); // 5秒ごと切り替え
+			}, 5000);
 			return () => clearInterval(timer);
 	}, []);
 	
+	// 実際に使うテキスト（undefined のときは FALLBACK_TEXTS）
+	const t = texts ?? FALLBACK_TEXTS;
+	
 	return (
-		<section className="w-full pt-10 pb-10 text-center">
-		{/* ▼ タイトル */}
+		<section
+		id="hero"
+		className="w-full pt-12 pb-16"
+		>
+		<div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 md:items-center px-4">
+		{/* ▼ 左側：タイトル・文章・ボタン */}
+		<div className="text-left space-y-4">
+		{/* タイトル */}
 		<h1 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">
-		{texts.title}
+		{t.title}
 		</h1>
 		
-		{/* ▼ サブタイトル */}
-		<p className="mt-3 text-neutral-700">{texts.subtitle}</p>
+		{/* サブタイトル */}
+		<p className="text-lg md:text-xl text-neutral-700">
+		{t.subtitle}
+		</p>
 		
-		{/* ▼ 詩のような文 */}
+		{/* 詩文（HTMLあり） */}
 		<p
-		className="text-neutral-600"
-		dangerouslySetInnerHTML={{ __html: texts.poem }}
+		className="text-neutral-600 leading-relaxed"
+		dangerouslySetInnerHTML={{ __html: t.poem }}
 		/>
 		
-		{/* ▼ CTA ボタン */}
-		<div className="mt-6 flex justify-center">
+		{/* CTA */}
+		<div className="pt-2">
 		<a
 		href="#book"
 		className="
-		rounded-full px-6 py-2 border border-neutral-300
+		inline-block rounded-full px-6 py-2 border border-neutral-300
 		text-neutral-800 text-sm shadow-sm hover:bg-neutral-50
 		"
 		>
-		{texts.cta1}
+		{t.cta1}
 		</a>
 		</div>
+		</div>
 		
-		{/* ▼ スライド画像 */}
-		<div className="relative w-full mt-8 flex justify-center">
-		<div className="relative w-full max-w-xl aspect-video rounded-3xl overflow-hidden bg-white shadow-md">
+		{/* ▼ 右側：スライド画像 */}
+		<div className="md:justify-self-end w-full">
+		<div className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-3xl overflow-hidden bg-white shadow-md">
 		{sliderImages.map((src, i) => (
 					<Image
 					key={i}
@@ -77,7 +100,7 @@ export default function HeroSection({ texts }: { texts: HeroTexts }) {
 		))}
 		</div>
 		</div>
-		
+		</div>
 		</section>
 	);
 }
