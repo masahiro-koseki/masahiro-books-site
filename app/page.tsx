@@ -522,7 +522,7 @@ export default function Page() {
 		
 		{/* 左：ロゴ */}
 		<div className="flex items-center gap-2 font-semibold">
-		<OkojoLogo className="h-6 w-6" />
+		<OkojoLogo className="h-7 w-7" />
 		<span>Masahiro Koseki</span>
 		</div>
 		
