@@ -866,7 +866,17 @@ export default function Page() {
 		<OkojoLogo className="h-6 w-6 text-neutral-700" />
 			</div>
 			</div>
-			<div className="flex items-center gap-4 mt-4 text-neutral-600 text-sm">
+		<div className="flex items-center gap-4 mt-4 text-neutral-600 text-sm">
+		{/* 写真集サイトへのリンク */}
+		<a
+		href="https://masahiro-koseki.com/"
+		target="_blank"
+		rel="noopener noreferrer"
+		className="underline underline-offset-4 hover:opacity-70"
+		>
+		写真集サイト
+		</a>
+
 			<a href="https://www.instagram.com/mkoseki423/" target="_blank" className="underline underline-offset-4 hover:opacity-70" rel="noopener noreferrer">
 			Instagram
 			</a>
