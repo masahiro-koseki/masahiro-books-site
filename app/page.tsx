@@ -867,14 +867,14 @@ export default function Page() {
 			</div>
 			</div>
 		<div className="flex items-center gap-4 mt-4 text-neutral-600 text-sm">
-		{/* 写真集サイトへのリンク */}
+		{/* 写真集リンク（日本語/英語対応） */}
 		<a
 		href="https://masahiro-koseki.com/"
 		target="_blank"
 		rel="noopener noreferrer"
 		className="underline underline-offset-4 hover:opacity-70"
 		>
-		写真集サイト
+		{lang === "ja" ? "写真集サイト" : "Photo Book Website"}
 		</a>
 
 			<a href="https://www.instagram.com/mkoseki423/" target="_blank" className="underline underline-offset-4 hover:opacity-70" rel="noopener noreferrer">
