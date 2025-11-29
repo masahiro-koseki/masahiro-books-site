@@ -398,6 +398,7 @@ export default function Page() {
 						"岩手県金ケ崎町生まれ。子どもの頃から山や川で遊び、自然の中で過ごす時間が何よりの楽しみだった。大人になってからも東北の山々を歩き続け、そこで出会った動物たちや季節の移ろいに心を動かされてきた。その体験を子どもたちにも伝えたいという思いから、オコジョを主人公にした「オコジョの山のぼうけん」シリーズの制作を開始。山で見た景色や動物たちの世界を、絵と物語として届けている。また、日本の城や野鳥、花をテーマにした塗り絵シリーズも制作し、“自然を感じる本づくり”をライフワークとして活動している。",
 						location: "拠点：岩手県（日本）",
 						focus: "主なテーマ：自然・山・動物・物語づくり",
+						links: "詳しいプロフィール"
 					},
 					
 					news: {
@@ -454,6 +455,7 @@ export default function Page() {
 						"Born in Kanegasaki, Iwate, Masahiro grew up exploring mountains, rivers, and forests—places that shaped his deep appreciation for nature. Even as an adult, he continues to walk the mountains of northeastern Japan, observing the animals and the quiet changes of each season. These experiences inspired him to create picture books that share the wonder of nature with children. This led to the “Stoat’s Big Mountain Adventure” series, in which a curious stoat explores real mountain landscapes and encounters wildlife along the way. He also creates coloring books featuring Japanese castles, wild birds, and seasonal flowers, all rooted in the idea of helping readers “feel the presence of nature through books.”",
 						location: "Location: Iwate, Japan",
 						focus: "Themes: Nature, mountains, wildlife, storytelling",
+						links: "Full profile"
 					},
 					
 					news: {
