@@ -45,22 +45,33 @@ export default function AboutSection({ lang, about }: AboutSectionProps) {
 		<CardContent>
 		<ul className="text-sm text-neutral-700 space-y-2">
 		<li>
-		1962 –{" "}
-		{lang === "ja"
-			? "岩手県金ケ崎町生まれ"
+		1962 – {lang === "ja"
+			? "岩手県金ケ崎町に生まれる"
 		: "Born in Kanegasaki, Iwate, Japan"}
 		</li>
+		
 		<li>
-		1980s –{" "}
-		{lang === "ja"
-			? "山岳・渓流の撮影を開始"
-		: "Began photographing mountains and streams"}
+		1970s – {lang === "ja"
+			? "山や川で遊びながら自然に親しむ"
+		: "Spent childhood exploring mountains and rivers"}
 		</li>
+		
 		<li>
-		2025 –{" "}
-		{lang === "ja"
-			? "写真集「山と自然に魅せられて」制作"
-		: 'Working on the photo book "Fascinated by Mountains & Nature"'}
+		2020s – {lang === "ja"
+			? "自然体験をもとに「オコジョの山のぼうけん」シリーズ制作開始"
+		: "Began creating the “Stoat’s Big Mountain Adventure” picture-book series"}
+		</li>
+		
+		<li>
+		2020s – {lang === "ja"
+			? "日本の城・野鳥・花をテーマにした塗り絵シリーズを制作"
+		: "Started creating coloring books featuring Japanese castles, birds, and flowers"}
+		</li>
+		
+		<li>
+		2020s – {lang === "ja"
+			? "自然をテーマにした写真集の制作も並行して行う"
+		: "Also works on nature-themed photo books"}
 		</li>
 		</ul>
 		</CardContent>
@@ -76,8 +87,20 @@ export default function AboutSection({ lang, about }: AboutSectionProps) {
 		<ul className="text-sm text-neutral-700 space-y-2">
 		<li>
 		{lang === "ja"
-			? "写真集・Webサイトで岩手の山や渓流の魅力を発信"
-		: "Sharing the beauty of Iwate’s mountains and streams through photo books and the web"}
+			? "絵本・塗り絵を通して自然の魅力を伝える活動を行う"
+		: "Creates picture books and coloring books to share the charm of nature"}
+		</li>
+		
+		<li>
+		{lang === "ja"
+			? "「オコジョの山のぼうけん」シリーズや日本の城・野鳥の塗り絵シリーズを制作"
+		: "Author of the “Stoat’s Big Mountain Adventure” series and coloring books on castles and birds"}
+		</li>
+		
+		<li>
+		{lang === "ja"
+			? "東北の自然をテーマにした作品づくりを継続"
+		: "Continues to create works inspired by the nature of northeastern Japan"}
 		</li>
 		</ul>
 		</CardContent>
