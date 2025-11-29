@@ -24,7 +24,7 @@ import { BOOKS } from "@/data/books";
 
 // --- Amazon Links ---
 const AMAZON_JP = "https://www.amazon.co.jp/dp/B0G1CNPJ1L";
-const AMAZON_EN = "https://www.amazon.com/Fascinated-Mountains-Nature-Landscape-Photography/dp/B0G1GZVWKW?ref_=ast_author_dp&th=1&psc=1";
+const AMAZON_EN = "https://www.amazon.com/dp/B0G1GZVWKW";
 
 const LANG_KEY = "mk_lang";
 type Lang = "ja" | "en";
@@ -195,136 +195,7 @@ export default function Page() {
 	
 	const [menuOpen, setMenuOpen] = useState(false);
 	
-	
-	const galleryMeta = [
-	// 0) Alpine
-	{
-		alts: [
-		"Summer ridgeline with sea of clouds, Hayachine",
-		"Ridge at dawn, Hayachine (Iwate / Hayachine Range)",
-		"Autumn moor in Minamihonnai Highland with distant ranges",
-		"Frosty morning light facing Kurikoma."
-		],
-		jp: [
-		"雲海の向こうへほどける、早池峰の夏稜線。",
-		"早池峰の稜線、朝焼けが静かに満ちる。",
-		"秋の湿原、遠景の稜線が息をひそめる。",
-		"霜光にふれる朝、栗駒を望む。"
-		],
-		en: [
-		"A summer ridgeline of Hayachine fading beyond a sea of clouds.",
-		"Dawn seeps over Hayachine’s ridge.",
-		"Autumn moor, distant ridges holding their breath.",
-		"Frost-bright morning facing Kurikoma."
-		]
-	},
-	
-	// 1) Streams  ← 1枚目を新キャプションに更新
-	{
-		alts: [
-		"A mountain stream framed by fresh green leaves, with late snow and wild cherry blossoms along the bank.",
-		"Mossy boulders with silky flow in spring forest",
-		"Overhanging leaves above a clear rushing stream",
-		"Moss-covered fallen log across a quiet flow"
-		],
-		jp: [
-		"残雪を抱く岸にヤマザクラが咲き、流れは萌黄色の森を渡る。",
-		"緑に包まれた岩肌を水がさらう。",
-		"葉影の下を、澄んだ沢が走る。",
-		"倒木の苔が流れに溶けこむ。"
-		],
-		en: [
-		"Snow still lingers as cherry blossoms bloom above a rushing spring stream.",
-		"Water sweeps gently across green stones.",
-		"A clear stream runs beneath the shade of leaves.",
-		"Moss on the fallen tree blends into the flowing water."
-		]
-	},
-	
-	// 2) Woodlands
-	{
-		alts: [
-		"Snowy cedar grove in winter wind",
-		"Moss and vine on weathered trunk, humid forest",
-		"Summer fog in subalpine forest",
-		"Old beech overlooking a ravine, dawn light"
-		],
-		jp: [
-		"雪の杉林、風だけが行き来する。",
-		"湿りを帯びた樹皮に、苔が静かに息づく。",
-		"夏霧の森、足音まで吸いこまれる。",
-		"朝の光、古いブナの肌が目を覚ます。"
-		],
-		en: [
-		"A quiet cedar plantation covered by fresh winter snow.",
-		"Moss spreads across the weathered bark within a humid summer forest.",
-		"A mountain forest wrapped in dense midsummer fog.",
-		"Early morning sunlight reveals the character of an old beech tree."
-		]
-	}
-	];
-	
-	const gallerySources = [
-	[
-	"/images/alpine_01.webp",
-	"/images/alpine_02.webp",
-	"/images/alpine_03.webp",
-	"/images/alpine_04.webp"
-	],
-	[
-	"/images/stream_01.webp",
-	"/images/stream_02.webp",
-	"/images/stream_03.webp",
-	"/images/stream_04.webp"
-	],
-	[
-	"/images/woodland_04.webp",
-	"/images/woodland_02.webp",
-	"/images/woodland_03.webp",
-	"/images/woodland_01.webp"
-	],
-	];
-	
-	// --- Highlights (Spring / Summer / Autumn / Winter) ---
-	const HIGHLIGHTS = [
-	{
-		key: "spring",
-		src: "/images/highlight_spring.webp",
-		alt: "Spring: Fresh green stream in forest",
-		jp: "春 ― 芽吹きの沢",
-		en: "Spring — Awakening Stream",
-		desc_ja: "雪解け水が流れ、森が芽吹く。生命が再び動き出す季節。",
-		desc_en: "Snowmelt flows through the forest — a quiet awakening of life.",
-	},
-	{
-		key: "summer",
-		src: "/images/highlight_summer.webp",
-		alt: "Summer: Sea of clouds at dawn from ridge",
-		jp: "夏 ― 雲海の夜明け",
-		en: "Summer — Dawn above a Sea of Clouds",
-		desc_ja: "山頂からの夜明け、雲海が静かに広がり、光が世界を染める。",
-		desc_en: "At dawn, a sea of clouds stretches below — morning light paints the world anew.",
-	},
-	{
-		key: "autumn",
-		src: "/images/highlight_autumn.webp",
-		alt: "Autumn: Quiet pond reflecting foliage",
-		jp: "秋 ― 静かな映り込み",
-		en: "Autumn — Mirror of the Woods",
-		desc_ja: "風も止まり、水面に映る紅葉。静寂の中に季節の深まりを感じる。",
-		desc_en: "Still air, mirrored leaves — autumn deepens in serene reflection.",
-	},
-	{
-		key: "winter",
-		src: "/images/highlight_winter.webp",
-		alt: "Winter: Rimed trees under blue sky",
-		jp: "冬 ― 霧氷の樹々",
-		en: "Winter — Rime under Blue Sky",
-		desc_ja: "凍てつく朝、霧氷が陽光に輝く。静けさの中の白い輝き。",
-		desc_en: "Frozen morning, branches shimmering with frost — the silence glows white.",
-	},
-	] as const;
-	
+		
 	const NEWS_ITEMS = [
 	{
 		date: "2025-11-28",
@@ -760,30 +631,7 @@ export default function Page() {
 				</div>
 		)}
 		</Section>
-		
-		
-		
-		{/* ---- PORTFOLIO ---- */}
-		{/*<Section
-		id="portfolio"
-		className={`section-spacing ${
-				lang === "ja"
-				? "scroll-mt-20 md:scroll-mt-20"
-				: "scroll-mt-16 md:scroll-mt-20"
-		}`}
-		>
-		<H2>{t.portfolio.lead}</H2>
-		
-		<div id="PortfolioSection">
-		<PortfolioSection
-		lang={lang}
-		desc={t.portfolio.desc}
-		categories={t.portfolio.categories}
-		openGallery={openGallery}
-		/>
-		</div>
-		</Section>*/}
-			
+					
 			
 			{/* ---- ABOUT ---- */}
 			<Section
