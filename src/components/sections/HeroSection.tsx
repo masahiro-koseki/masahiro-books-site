@@ -65,10 +65,10 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		{t.title}
 		</h1>
 		
-		<p className="text-lg md:text-xl text-neutral-700">{t.subtitle}</p>
+		<p className="text-lg md:text-base text-neutral-700">{t.subtitle}</p>
 		
 		<p
-		className="text-neutral-600 leading-relaxed"
+		className="text-sm text-neutral-600 leading-relaxed"
 		dangerouslySetInnerHTML={{ __html: t.poem }}
 		/>
 		
