@@ -82,7 +82,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		
 		{/* ▼ 右側：スライド画像 */}
 		<div className="md:justify-self-end w-full">
-		<div className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-3xl overflow-hidden bg-white shadow-none">
+		<div className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-3xl overflow-hidden bg-white shadow-md">
 		{sliderImages.map((src, i) => (
 					<Image
 					key={i}
