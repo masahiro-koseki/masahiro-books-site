@@ -4,7 +4,6 @@
 
 import React, { useMemo, useState, useEffect } from "react";
 import HeroSection from "@/components/sections/HeroSection";
-import BookSection from "@/components/sections/BookSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
 import AboutSection from "@/components/sections/AboutSection";
 import NewsSection from "@/components/sections/NewsSection";
