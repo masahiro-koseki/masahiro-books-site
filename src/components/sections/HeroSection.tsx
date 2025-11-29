@@ -54,7 +54,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 	return (
 		<section
 		id="hero"
-		className="w-full pt-12 pb-16"
+		className="w-full pt-1 pb-1"
 		>
 		<div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 md:items-center px-4">
 		{/* ▼ 左側：タイトル・文章・ボタン */}
