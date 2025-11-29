@@ -115,7 +115,8 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		onClick={goToPrev}
 		aria-label="Previous slide"
 		className="
-		absolute inset-y-0 left-2 flex items-center justify-center
+		absolute left-2 top-1/2 -translate-y-1/2 transform
+		flex items-center justify-center
 		rounded-full bg-white/70 hover:bg-white shadow-sm
 		w-7 h-7 text-neutral-700 text-sm
 		"
@@ -129,7 +130,8 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		onClick={goToNext}
 		aria-label="Next slide"
 		className="
-		absolute inset-y-0 right-2 flex items-center justify-center
+		absolute right-2 top-1/2 -translate-y-1/2 transform
+		flex items-center justify-center
 		rounded-full bg-white/70 hover:bg-white shadow-sm
 		w-7 h-7 text-neutral-700 text-sm
 		"
