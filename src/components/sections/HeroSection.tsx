@@ -11,7 +11,7 @@ type HeroTexts = {
 };
 
 type HeroSectionProps = {
-	texts?: HeroTexts; // 念のため optional に
+	texts?: HeroTexts; // 念のため optional
 };
 
 const FALLBACK_TEXTS: HeroTexts = {
@@ -32,7 +32,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 	
 	const [index, setIndex] = useState(0);
 	
-	// 自動スライド（フェードはそのまま）
+	// 自動スライド
 	useEffect(() => {
 			const timer = setInterval(() => {
 					setIndex((prev) => (prev + 1) % sliderImages.length);
@@ -40,7 +40,6 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 			return () => clearInterval(timer);
 	}, [sliderImages.length]);
 	
-	// 手動操作用
 	const goToNext = () => {
 		setIndex((prev) => (prev + 1) % sliderImages.length);
 	};
@@ -52,28 +51,25 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 	const t = texts ?? FALLBACK_TEXTS;
 	
 	return (
-		<section
-		id="hero"
-		className="w-full pt-10 pb-0"
-		>
+		<section id="home" className="w-full pt-12 pb-16">
 		<div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 md:items-center px-4">
 		{/* ▼ 左側：タイトル・文章・ボタン */}
-		<div className="relative text-left space-y-4">
-				
-		{/* 通常テキスト */}
-		<h1 className="text-3xl md:text-3xl font-bold text-neutral-900 leading-tight">
+		<div className="text-left space-y-4">
+		<h1 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">
 		{t.title}
 		</h1>
 		
-		<p className="text-lg md:text-base text-neutral-700">{t.subtitle}</p>
+		<p className="text-lg md:text-xl text-neutral-700">
+		{t.subtitle}
+		</p>
 		
 		<p
-		className="text-sm text-neutral-600 leading-relaxed"
+		className="text-neutral-600 leading-relaxed"
 		dangerouslySetInnerHTML={{ __html: t.poem }}
 		/>
 		
-		{/* ▼ CTA ＋ オコジョ行 */}
-		<div className="pt-2 flex items-center justify-center gap-4">
+		{/* ▼ CTA ＋ 小さなオコジョ */}
+		<div className="pt-2 flex items-center justify-center md:justify-start gap-4">
 		<a
 		href="#book"
 		className="inline-block rounded-full px-6 py-2 border border-neutral-300
@@ -82,7 +78,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		{t.cta1}
 		</a>
 		
-		{/* CTA 横にオコジョ（PNG 印刷版） */}
+		<div className="relative h-10 w-10">
 		<Image
 		src="/okojo-logo.png"
 		alt="Okojo logo"
@@ -90,11 +86,12 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		className="object-contain okojo-float"
 		/>
 		</div>
-	</div>
+		</div>
+		</div>
 		
 		{/* ▼ 右側：スライド画像＋矢印＋ドット */}
 		<div className="md:justify-self-end w-full">
-		<div className="relative w-full max-w-xl mx-auto aspect-[3/2] rounded-3xl overflow-hidden bg-white shadow-md">
+		<div className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-3xl overflow-hidden bg-white shadow-md">
 		{/* スライド画像（フェード切り替え） */}
 		{sliderImages.map((src, i) => (
 					<Image
