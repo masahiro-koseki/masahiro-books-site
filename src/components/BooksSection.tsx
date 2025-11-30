@@ -16,30 +16,39 @@ function truncate(text: string, max: number) {
 	return text.slice(0, max) + "…";
 }
 
+// 発売日の表示用フォーマッタ
+function formatPublished(published: string | undefined, lang: "ja" | "en") {
+	if (!published) return "";
+	const d = new Date(published);
+	if (Number.isNaN(d.getTime())) return published;
+	
+	const y = d.getFullYear();
+	const m = d.getMonth() + 1;
+	const day = d.getDate();
+	
+	if (lang === "ja") {
+		return `${y}年${m}月${day}日`;
+	}
+	
+	const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	return `${months[m - 1]} ${day}, ${y}`;
+}
+
 export default function BooksSection({ books, lang }: BooksSectionProps) {
 	if (!books || books.length === 0) return null;
 	
-	// ▼ 新 → 旧 の順にソート
-	const sortedBooks = [...books].sort((a, b) => {
-			const da = new Date(a.published || "1970-01-01").getTime();
-			const db = new Date(b.published || "1970-01-01").getTime();
-			return db - da;
-	});
-	
-	// マウント時アニメーション
+	// ▼ マウント時アニメーション用フラグ
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => setMounted(true), []);
 	
 	return (
 		<div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-		{sortedBooks.map((book, index) => {
-					// ▼ タイトル（日本語 / 英語）
+		{books.map((book, index) => {
 					const mainTitle =
 					lang === "ja"
 					? book.titleJa ?? book.title
-					: book.title ?? book.titleJa ?? "";
+					: book.title || book.titleJa || "";
 					
-					// ▼ 説明文
 					const fullDesc =
 					lang === "ja"
 					? book.descriptionJa ?? book.description
@@ -50,42 +59,44 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 					
 					const detailLabel = lang === "ja" ? "詳細を見る" : "View details";
 					
+					const publishedLabel = formatPublished(book.published, lang);
+					
 					return (
 						<article
 						key={book.id}
-						className={`
-							flex flex-col md:flex-row gap-6 rounded-2xl border border-neutral-200 
-							bg-white p-5 shadow-md hover:shadow-xl 
-							transition-all duration-500 ease-out transform
-							${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
-						`}
-						style={{ transitionDelay: `${index * 90}ms` }}
+						className={
+							"flex flex-col md:flex-row h-full gap-6 rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm hover:shadow-md transition-all duration-500 ease-out " +
+							(mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3")
+						}
+						style={{ transitionDelay: `${index * 80}ms` }}
 						>
-						{/* ▼ 左側：本文 */}
-						<div className="flex-1 flex flex-col justify-between">
-						{/* タイトル */}
-						<h3 className="text-lg font-semibold text-neutral-900 tracking-tight leading-snug">
+						{/* 左：タイトル＋テキスト */}
+						<div className="flex-1">
+						<h3 className="text-base md:text-lg font-semibold text-neutral-900">
 						{mainTitle}
 						</h3>
 						
-						{/* 説明文 */}
 						{shortDesc && (
-								<p className="mt-3 text-sm text-neutral-600 leading-relaxed">
-								{shortDesc}
+								<p className="mt-3 text-sm text-neutral-600">{shortDesc}</p>
+						)}
+						
+						{/* 発売日 */}
+						{publishedLabel && (
+								<p className="mt-2 text-xs text-neutral-500">
+								{lang === "ja"
+									? `発売日：${publishedLabel}`
+								: `Published: ${publishedLabel}`}
 								</p>
 						)}
 						
-						{/* ▼ ボタン類 */}
+						{/* ボタン類 */}
 						<div className="mt-4 flex flex-wrap gap-2 text-xs">
 						{book.amazonJp && (
 								<a
 								href={book.amazonJp}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="
-								px-3 py-1.5 rounded-full border border-neutral-300 
-								hover:bg-neutral-50 transition text-neutral-800
-								"
+								className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
 								>
 								Amazon.co.jp
 								</a>
@@ -96,10 +107,7 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 								href={book.amazonEn}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="
-								px-3 py-1.5 rounded-full border border-neutral-300 
-								hover:bg-neutral-50 transition text-neutral-800
-								"
+								className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
 								>
 								Amazon.com
 								</a>
@@ -107,33 +115,22 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 						
 						<Link
 						href={`/books/${book.id}`}
-						className="
-						px-3 py-1.5 rounded-full border border-neutral-300 
-						hover:bg-neutral-50 transition text-neutral-800
-						"
+						className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
 						>
 						{detailLabel}
 						</Link>
 						</div>
 						</div>
 						
-						{/* ▼ 右側：表紙画像 */}
+						{/* 右：カバー画像 */}
 						{book.coverSrc && (
 								<div className="w-full md:w-48 lg:w-56 shrink-0">
-								<div
-								className="
-								relative aspect-square rounded-xl overflow-hidden 
-								bg-neutral-100 shadow-sm hover:shadow-md transition-shadow
-								"
-								>
+								<div className="relative aspect-square rounded-xl overflow-hidden bg-neutral-100 shadow-sm hover:shadow-md transition-shadow duration-300">
 								<Image
 								src={book.coverSrc}
 								alt={mainTitle}
 								fill
-								className="
-								object-cover transition-transform duration-500
-								hover:scale-[1.03]
-								"
+								className="object-cover"
 								/>
 								</div>
 								</div>

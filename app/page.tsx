@@ -457,8 +457,13 @@ export default function Page() {
 		
 		{/* ▼ タブごとの表示内容 */}
 		{selectedCategory === "all" && (
-				<div className="mt-6 space-y-10">
-				
+				<motion.div
+				key="all"
+				initial={{ opacity: 0, y: 8 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.35 }}
+				className="mt-6 space-y-10"
+				>
 				{/* 絵本 */}
 				<section>
 				<h3 className="text-lg font-semibold mb-3">
@@ -491,34 +496,43 @@ export default function Page() {
 				lang={lang}
 				/>
 				</section>
-				</div>
+				</motion.div>
 		)}
 		
-		{selectedCategory === "picture" && (
-				<div className="mt-6 space-y-4">
-				<h3 className="text-lg font-semibold">
-				絵本 / Picture Books
-				</h3>
+		{selectedCategory === "picture-book" && (
+				<motion.div
+				key="picture-book"
+				initial={{ opacity: 0, y: 8 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.35 }}
+				className="mt-6"
+				>
 				<BooksSection books={pictureBooks} lang={lang} />
-				</div>
+				</motion.div>
 		)}
 		
 		{selectedCategory === "coloring" && (
-				<div className="mt-6 space-y-4">
-				<h3 className="text-lg font-semibold">
-				塗り絵 / Coloring Books
-				</h3>
+				<motion.div
+				key="coloring"
+				initial={{ opacity: 0, y: 8 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.35 }}
+				className="mt-6"
+				>
 				<BooksSection books={coloringBooks} lang={lang} />
-				</div>
+				</motion.div>
 		)}
 		
 		{selectedCategory === "photo" && (
-				<div className="mt-6 space-y-4">
-				<h3 className="text-lg font-semibold">
-				写真集 / Photo Books
-				</h3>
+				<motion.div
+				key="photo"
+				initial={{ opacity: 0, y: 8 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.35 }}
+				className="mt-6"
+				>
 				<BooksSection books={photoBooks} lang={lang} />
-				</div>
+				</motion.div>
 		)}
 		</Section>
 					
