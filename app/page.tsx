@@ -438,7 +438,7 @@ export default function Page() {
 								lang === "ja" ? "写真集 / Photo Book" : "Photo Book";
 							}
 							
-							// 発売日表示（あれば）
+							// 発売日
 							const published = book.published
 							? (() => {
 									const d = new Date(book.published!);
@@ -447,6 +447,7 @@ export default function Page() {
 									const m = d.getMonth() + 1;
 									const day = d.getDate();
 									if (lang === "ja") return `${y}年${m}月${day}日`;
+									
 									const months = [
 									"Jan","Feb","Mar","Apr","May","Jun",
 									"Jul","Aug","Sep","Oct","Nov","Dec",
@@ -455,12 +456,24 @@ export default function Page() {
 							})()
 							: "";
 							
+							// ★ 説明文（短く）
+							const fullDesc = lang === "ja"
+							? book.descriptionJa ?? book.description
+							: book.description ?? book.descriptionJa;
+							
+							const shortDesc = fullDesc
+							? (lang === "ja"
+								? fullDesc.slice(0, 55) + "…"
+							: fullDesc.slice(0, 90) + "…")
+							: "";
+							
 							return (
 								<Link
 								key={book.id}
 								href={`/books/${book.id}`}
 								className="flex items-center gap-4 rounded-xl bg-white/90 px-3 py-3 hover:bg-white shadow-sm hover:shadow-md transition-all duration-300"
 								>
+								{/* カバー */}
 								{book.coverSrc && (
 										<div className="relative h-20 w-16 sm:h-24 sm:w-20 rounded-lg overflow-hidden bg-neutral-100 flex-shrink-0">
 										<Image
@@ -479,16 +492,25 @@ export default function Page() {
 										</div>
 								)}
 								
+								{/* タイトル */}
 								<div className="text-sm font-semibold text-neutral-900 line-clamp-2">
 								{mainTitle}
 								</div>
 								
+								{/* 発売日 */}
 								{published && (
 										<div className="mt-1 text-[11px] text-neutral-500">
 										{lang === "ja"
 											? `発売日：${published}`
 										: `Published: ${published}`}
 										</div>
+								)}
+								
+								{/* ★説明文追加 */}
+								{shortDesc && (
+										<p className="mt-2 text-xs text-neutral-600 line-clamp-2">
+										{shortDesc}
+										</p>
 								)}
 								</div>
 								</Link>
