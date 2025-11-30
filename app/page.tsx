@@ -577,7 +577,8 @@ export default function Page() {
 			<Section id="footer" className="section-spacing py-10">
 			<div className="flex flex-col sm:flex-row items-center justify-between gap-4">
 			<div className="text-sm text-neutral-600">
-			{t.footer.rights} — {new Date().getFullYear()}
+		{t.footer.rights} — {new Date().getFullYear()}
+		<Image src="/okojo-logo.png" alt="Okojo icon" width={24} height={24} className="opacity-80"/>
 			</div>
 			<div className="flex items-center gap-2 text-sm text-neutral-600">
 			<span>{t.footer.lang}:</span>
