@@ -27,6 +27,9 @@ const SORTED_BOOKS = [...BOOKS].sort((a, b) => {
 		return db - da;
 });
 
+// ▼ 今月のおすすめ（とりあえず最新 2 冊）
+const FEATURED_BOOKS = SORTED_BOOKS.slice(0, 2);
+
 // --- Amazon Links ---
 const AMAZON_JP = "https://www.amazon.co.jp/dp/B0G1CNPJ1L";
 const AMAZON_EN = "https://www.amazon.com/dp/B0G1GZVWKW";
@@ -400,6 +403,101 @@ export default function Page() {
 		>
 		{/* 全体の見出し */}
 		<H2>{t.book.lead}</H2>
+		
+		{/* 今月のおすすめ書籍 */}
+		{FEATURED_BOOKS.length > 0 && (
+				<section className="mt-6 rounded-2xl border border-amber-200 bg-amber-50/70 px-4 py-4">
+				<div className="flex items-center gap-2 text-sm font-medium text-amber-900">
+				<span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-500 text-white">
+				{lang === "ja" ? "今月のおすすめ" : "Featured this month"}
+				</span>
+				<span className="text-xs sm:text-sm text-amber-900/90">
+				{lang === "ja"
+					? "新刊やとくにおすすめしたい本をピックアップしました。"
+				: "A small selection of books we especially recommend right now."}
+				</span>
+				</div>
+				
+				<div className="mt-4 grid gap-4 md:grid-cols-2">
+				{FEATURED_BOOKS.map((book) => {
+							const mainTitle =
+							lang === "ja"
+							? book.titleJa ?? book.title
+							: book.title || book.titleJa || "";
+							
+							// カテゴリーラベル
+							let categoryLabel = "";
+							if (book.category === "picture-book") {
+								categoryLabel =
+								lang === "ja" ? "絵本 / Picture Book" : "Picture Book";
+							} else if (book.category === "coloring") {
+								categoryLabel =
+								lang === "ja" ? "塗り絵 / Coloring Book" : "Coloring Book";
+							} else if (book.category === "photo") {
+								categoryLabel =
+								lang === "ja" ? "写真集 / Photo Book" : "Photo Book";
+							}
+							
+							// 発売日表示（あれば）
+							const published = book.published
+							? (() => {
+									const d = new Date(book.published!);
+									if (Number.isNaN(d.getTime())) return "";
+									const y = d.getFullYear();
+									const m = d.getMonth() + 1;
+									const day = d.getDate();
+									if (lang === "ja") return `${y}年${m}月${day}日`;
+									const months = [
+									"Jan","Feb","Mar","Apr","May","Jun",
+									"Jul","Aug","Sep","Oct","Nov","Dec",
+									];
+									return `${months[m - 1]} ${day}, ${y}`;
+							})()
+							: "";
+							
+							return (
+								<Link
+								key={book.id}
+								href={`/books/${book.id}`}
+								className="flex items-center gap-4 rounded-xl bg-white/90 px-3 py-3 hover:bg-white shadow-sm hover:shadow-md transition-all duration-300"
+								>
+								{book.coverSrc && (
+										<div className="relative h-20 w-16 sm:h-24 sm:w-20 rounded-lg overflow-hidden bg-neutral-100 flex-shrink-0">
+										<Image
+										src={book.coverSrc}
+										alt={mainTitle}
+										fill
+										className="object-cover"
+										/>
+										</div>
+								)}
+								
+								<div className="min-w-0">
+								{categoryLabel && (
+										<div className="text-[11px] text-amber-700 mb-1">
+										{categoryLabel}
+										</div>
+								)}
+								
+								<div className="text-sm font-semibold text-neutral-900 line-clamp-2">
+								{mainTitle}
+								</div>
+								
+								{published && (
+										<div className="mt-1 text-[11px] text-neutral-500">
+										{lang === "ja"
+											? `発売日：${published}`
+										: `Published: ${published}`}
+										</div>
+								)}
+								</div>
+								</Link>
+							);
+				})}
+				</div>
+				</section>
+		)}
+
 		
 		{/* ▼ カテゴリータブ */}
 		<div className="mt-4 flex flex-wrap gap-2 text-sm border-b border-neutral-200 pb-1">
