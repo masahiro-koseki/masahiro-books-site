@@ -102,7 +102,7 @@ export const BOOKS: Book[] = [
 	specs: [
 	"判型：210mm x 210mm（正方形レイアウト）",
 	"ページ数：27 ページ",
-	"言語：日本語",
+	"言語：英語",
 	"構成：左ページに文章、右ページにイラストの見開き構成",
 	],
 	ageRange: "対象年齢：4〜8歳くらい",
@@ -116,7 +116,7 @@ export const BOOKS: Book[] = [
 	specsEn: [
 	"Trim size: 210mm × 210mm (square format)",
 	"Pages: 27 pages",
-	"Language: Japanese",
+	"Language: English",
 	"Layout: text on the left page and illustration on the right, presented as full spreads",
 	],
 	
