@@ -392,7 +392,7 @@ export default function Page() {
 		</header>
 		
 		
-		<Section id="home" className="pt-0 pb-0">
+		<section id="home" className="w-full pt-2 pb-0">
 		<HeroSection texts={t.hero}  />
 		</Section>
 		
