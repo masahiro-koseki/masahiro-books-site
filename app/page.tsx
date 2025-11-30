@@ -542,61 +542,56 @@ export default function Page() {
 		)}
 
 		
-		{/* ▼ カテゴリータブ */}
-		<div className="mt-6 flex flex-wrap gap-2 text-sm border-b border-neutral-200 pb-1">
-		<button
-		type="button"
-		onClick={() => setSelectedCategory("all")}
-		className={
-			"px-3 py-1 rounded-full" +
-			(selectedCategory === "all"
-				? " bg-neutral-900 text-white"
-			: " text-neutral-700 hover:bg-neutral-100")
-		}
-		>
-		{lang === "ja" ? "すべて" : "All"}
-		</button>
-		
-		<button
-		type="button"
-		onClick={() => setSelectedCategory("picture")}
-		className={
-			"px-3 py-1 rounded-full" +
-			(selectedCategory === "picture"
-				? " bg-neutral-900 text-white"
-			: " text-neutral-700 hover:bg-neutral-100")
-		}
-		>
-		{lang === "ja" ? "絵本" : "Picture Books"}
-		</button>
-		
-		<button
-		type="button"
-		onClick={() => setSelectedCategory("coloring")}
-		className={
-			"px-3 py-1 rounded-full" +
-			(selectedCategory === "coloring"
-				? " bg-neutral-900 text-white"
-			: " text-neutral-700 hover:bg-neutral-100")
-		}
-		>
-		{lang === "ja" ? "塗り絵" : "Coloring Books"}
-		</button>
-		
-		<button
-		type="button"
-		onClick={() => setSelectedCategory("photo")}
-		className={
-			"px-3 py-1 rounded-full" +
-			(selectedCategory === "photo"
-				? " bg-neutral-900 text-white"
-			: " text-neutral-700 hover:bg-neutral-100")
-		}
-		>
-		{lang === "ja" ? "写真集" : "Photo Books"}
-		</button>
+		{/* カテゴリータブ（オシャレ版） */}
+		<div className="mt-8 flex justify-center">
+		<div className="inline-flex flex-wrap items-center gap-1 rounded-full bg-neutral-100 px-1 py-1">
+		{[
+			{
+				key: "all",
+				labelJa: "すべて",
+				labelEn: "All",
+				icon: Globe,
+			},
+			{
+				key: "picture",
+				labelJa: "絵本",
+				labelEn: "Picture Books",
+				icon: BookOpen,
+			},
+			{
+				key: "coloring",
+				labelJa: "塗り絵",
+				labelEn: "Coloring Books",
+				icon: BookOpen,
+			},
+			{
+				key: "photo",
+				labelJa: "写真集",
+				labelEn: "Photo Books",
+				icon: Camera,
+			},
+			].map((cat) => {
+					const active = selectedCategory === cat.key;
+					const Icon = cat.icon;
+					return (
+						<button
+						key={cat.key}
+						onClick={() => setSelectedCategory(cat.key)}
+						className={
+							"flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs sm:text-sm transition-all " +
+							(active
+								? "bg-white text-neutral-900 shadow-sm"
+							: "text-neutral-500 hover:text-neutral-800 hover:bg-neutral-200/70")
+						}
+						>
+						<Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+						<span>{lang === "ja" ? cat.labelJa : cat.labelEn}</span>
+						</button>
+					);
+		})}
 		</div>
-		
+		</div>
+				
 		{/* ▼ タブごとの表示内容 */}
 		{selectedCategory === "all" && (
 				<motion.div
