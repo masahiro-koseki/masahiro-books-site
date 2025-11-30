@@ -105,7 +105,18 @@ export default async function BookDetailPage({
 		{/* 左：カバー画像 + Amazon */}
 		<div className="space-y-5">
 		{book.coverSrc && (
-				<div className="relative w-full max-w-xs mx-auto aspect-[3/4] md:aspect-square rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
+				<div
+				className="
+				group
+				relative w-full max-w-xs mx-auto
+				aspect-[3/4] md:aspect-square
+				rounded-2xl overflow-hidden
+				border border-neutral-200 bg-white
+				shadow-sm
+				transition-all duration-300
+				hover:shadow-lg hover:-translate-y-1
+				"
+				>
 				<Image
 				src={book.coverSrc}
 				alt={book.title}
@@ -114,6 +125,7 @@ export default async function BookDetailPage({
 				/>
 				</div>
 		)}
+		</div>
 		
 		{/* Amazon ボタン */}
 		<div className="flex flex-col gap-2 text-sm">
