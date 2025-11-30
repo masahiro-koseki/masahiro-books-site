@@ -8,6 +8,7 @@ export type Book = {
 	titleJa?: string;       // 日本語タイトル（ある場合）
 	series?: string;        // シリーズ名
 	category: BookCategory; // 絵本 / 塗り絵 / 写真集
+	published?: string;		//発売日
 	description?: string;   // 英語紹介文（任意）
 	descriptionJa?: string; // 日本語紹介文（任意）
 	amazonJp?: string;      // Amazon JP
