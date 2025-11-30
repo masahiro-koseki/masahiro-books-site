@@ -47,7 +47,7 @@ export default async function BookDetailPage({
 		href="/"
 		className="inline-flex items-center gap-3 text-sm text-neutral-600 hover:text-neutral-900"
 		>
-		<div className="relative h-6 w-6">
+		<div className="relative h-10 w-10">
 		<Image
 		src="/okojo-logo.png"
 		alt="Okojo logo"
@@ -328,7 +328,7 @@ export default async function BookDetailPage({
 		href="/"
 		className="inline-flex items-center gap-3 text-neutral-700 hover:text-neutral-900"
 		>
-		<div className="relative h-8 w-8 mx-auto">
+		<div className="relative h-10 w-10 mx-auto">
 		<Image
 		src="/okojo-logo.png"
 		alt="Okojo logo"
