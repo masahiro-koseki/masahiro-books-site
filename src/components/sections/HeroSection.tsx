@@ -51,7 +51,6 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 	const t = texts ?? FALLBACK_TEXTS;
 	
 	return (
-		<section id="home" className="w-full pt-12 pb-16">
 		<div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 md:items-center px-4">
 		{/* ▼ 左側：タイトル・文章・ボタン */}
 		<div className="text-left space-y-4">
@@ -162,6 +161,5 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		</div>
 		</div>
 		</div>
-		</section>
 	);
 }
