@@ -406,7 +406,7 @@ export default function Page() {
 		
 		{/* 今月のおすすめ書籍 */}
 		{FEATURED_BOOKS.length > 0 && (
-				<section className="mt-0 rounded-2xl border border-amber-100 bg-amber-50 px-4 py-4">
+				<section className="mt-0 rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-4">
 				<div className="flex items-center gap-2 text-sm font-medium text-amber-900">
 				<span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-500 text-white">
 				{lang === "ja" ? "今月のおすすめ" : "Featured this month"}
