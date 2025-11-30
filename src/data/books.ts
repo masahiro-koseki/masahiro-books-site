@@ -779,7 +779,7 @@ export const BOOKS: Book[] = [
 // --- 写真集（Photo Books） ---
 {
 	id: "photo-main",
-	title: "山と自然に魅せられて",
+	title: "Fascinated by Mountains and Nature",
 	titleJa: "山と自然に魅せられて",
 	category: "photo",
 	published: "2025-11-07",
@@ -834,7 +834,7 @@ export const BOOKS: Book[] = [
 {
 	id: "photo-main-en",
 	title: "Fascinated by Mountains and Nature",
-	titleJa: "山と自然に魅せられて",
+	titleJa: "Fascinated by Mountains and Nature",
 	category: "photo",
 	published: "2025-11-07",
 	amazonJp: "",
