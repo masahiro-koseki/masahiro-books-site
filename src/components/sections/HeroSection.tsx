@@ -69,7 +69,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		/>
 		
 		{/* ▼ CTA ＋ 小さなオコジョ */}
-		<div className="pt-2 flex items-center justify-center md:justify-start gap-4">
+		<div className="pt-2 flex items-center justify-center gap-4">
 		<a
 		href="#book"
 		className="inline-block rounded-full px-6 py-2 border border-neutral-300
@@ -91,7 +91,7 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		
 		{/* ▼ 右側：スライド画像＋矢印＋ドット */}
 		<div className="md:justify-self-end w-full">
-		<div className="relative w-full max-w-xl mx-auto aspect-[4/3] rounded-3xl overflow-hidden bg-white shadow-md">
+		<div className="relative w-full max-w-xl mx-auto aspect-[3/2] rounded-3xl overflow-hidden bg-white shadow-md">
 		{/* スライド画像（フェード切り替え） */}
 		{sliderImages.map((src, i) => (
 					<Image
