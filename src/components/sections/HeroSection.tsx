@@ -86,9 +86,8 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		<Image
 		src="/okojo-logo.png"
 		alt="Okojo logo"
-		width={40}
-		height={40}
-		className="opacity-90"
+		fill
+		className="object-contain okojo-float"
 		/>
 		</div>
 	</div>
