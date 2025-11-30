@@ -306,30 +306,29 @@ export default async function BookDetailPage({
 				</div>
 				</div>
 				</section>
-				
-				{/* 戻るリンク：書籍一覧へ */}
-				<section className="mt-10 pt-6 border-t border-neutral-200">
-				<Link
-				href="/"
-				className="inline-flex items-center gap-3 text-sm text-neutral-700 hover:text-neutral-900"
-				>
-				<div className="relative h-8 w-8">
-				<Image
-				src="/okojo-logo.png"
-				alt="Okojo logo"
-				fill
-				className="object-contain"
-				/>
-				</div>
-				<div className="flex flex-col leading-tight">
-				<span>← 書籍一覧へ戻る</span>
-				<span className="text-xs text-neutral-500">
-				← Back to book list
-				</span>
-				</div>
-				</Link>
-				</section>
 		)}
+		
+		<section className="mt-10 pt-6 border-t border-neutral-200">
+		<Link
+		href="/"
+		className="inline-flex items-center gap-3 text-sm text-neutral-700 hover:text-neutral-900"
+		>
+		<div className="relative h-8 w-8">
+		<Image
+		src="/okojo-logo.png"
+		alt="Okojo logo"
+		fill
+		className="object-contain"
+		/>
+		</div>
+		<div className="flex flex-col leading-tight">
+		<span>← 書籍一覧へ戻る</span>
+		<span className="text-xs text-neutral-500">
+		← Back to book list
+		</span>
+		</div>
+		</Link>
+		</section>
 		</div>
 	);
 }
