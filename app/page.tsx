@@ -28,7 +28,7 @@ const SORTED_BOOKS = [...BOOKS].sort((a, b) => {
 });
 
 // ▼ 今月のおすすめ（とりあえず最新 2 冊）
-const FEATURED_BOOKS = SORTED_BOOKS.slice(0, 2);
+const FEATURED_BOOKS = SORTED_BOOKS.filter((b) => b.featured).slice(0, 2);
 
 // --- Amazon Links ---
 const AMAZON_JP = "https://www.amazon.co.jp/dp/B0G1CNPJ1L";

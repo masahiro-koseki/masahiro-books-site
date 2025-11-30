@@ -9,6 +9,7 @@ export type Book = {
 	series?: string;        // シリーズ名
 	category: BookCategory; // 絵本 / 塗り絵 / 写真集
 	published?: string;		//発売日
+	featured?: boolean; 	//おすすめ度
 	description?: string;   // 英語紹介文（任意）
 	descriptionJa?: string; // 日本語紹介文（任意）
 	amazonJp?: string;      // Amazon JP
@@ -139,6 +140,7 @@ export const BOOKS: Book[] = [
 	series: "Stoat Adventure",
 	category: "picture-book",
 	published: "2025-05-28",
+	featured: true,
 	amazonJp: "https://www.amazon.co.jp/dp/B0FB8QT2S9",
 	amazonEn: "https://www.amazon.com/dp/B0FB8QT2S9",
 	coverSrc: "/covers/stoat-part2.jpg",
@@ -783,6 +785,7 @@ export const BOOKS: Book[] = [
 	titleJa: "山と自然に魅せられて",
 	category: "photo",
 	published: "2025-11-07",
+	featured: true,
 	amazonJp: "https://www.amazon.co.jp/dp/B0G1CNPJ1L",
 	amazonEn: "",
 	coverSrc: "/covers/photo-main.jpg",
