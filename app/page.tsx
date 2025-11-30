@@ -391,8 +391,7 @@ export default function Page() {
 		)}
 		</header>
 		
-		
-		<section id="home" className="w-full pt-2 pb-0">
+		<Section id="home" className="w-full pt-2 pb-0">
 		<HeroSection texts={t.hero}  />
 		</Section>
 		
