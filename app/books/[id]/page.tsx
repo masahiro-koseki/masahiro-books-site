@@ -114,7 +114,7 @@ export default async function BookDetailPage({
 				border border-neutral-200 bg-white
 				shadow-sm
 				transition-all duration-300
-				hover:shadow-lg hover:-translate-y-1
+				hover:shadow-lg hover:-translate-y-1 hover:scale-[1.03]
 				"
 				>
 				<Image
@@ -274,7 +274,7 @@ export default async function BookDetailPage({
 							border border-neutral-200 bg-white
 							shadow-sm
 							transition-all duration-300
-							hover:shadow-lg hover:-translate-y-1
+							hover:shadow-lg hover:-translate-y-1 hover:scale-[1.03]
 							"
 							>
 							<Image

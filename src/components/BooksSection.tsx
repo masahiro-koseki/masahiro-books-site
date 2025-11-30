@@ -71,7 +71,7 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 							bg-white p-4
 							shadow-sm
 							transition-all duration-300
-							hover:shadow-lg hover:-translate-y-1
+							hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02]
 							${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
 						`}
 						style={{ transitionDelay: `${index * 80}ms` }}
