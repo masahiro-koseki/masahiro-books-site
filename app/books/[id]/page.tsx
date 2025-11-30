@@ -125,7 +125,6 @@ export default async function BookDetailPage({
 				/>
 				</div>
 		)}
-		</div>
 		
 		{/* Amazon ボタン */}
 		<div className="flex flex-col gap-2 text-sm">
