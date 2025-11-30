@@ -31,6 +31,14 @@ export default async function BookDetailPage({
 	
 	const catMeta = getCategoryMeta(book.category);
 	
+	// ★ 関連書籍ロジック：同じシリーズ優先 → なければ同じカテゴリ
+	const relatedBooks = BOOKS.filter((b) => b.id !== book.id)
+	.filter((b) => {
+			if (book.series && b.series === book.series) return true;
+			return b.category === book.category;
+	})
+	.slice(0, 6);
+	
 	return (
 		<div className="max-w-5xl mx-auto px-4 py-10 md:py-14">
 		{/* 戻るリンク */}
@@ -121,14 +129,14 @@ export default async function BookDetailPage({
 		
 		{/* 右：書籍情報パネル（日本語 / 英語） */}
 		<div className="text-neutral-800 leading-relaxed space-y-4">
-		{(book.specs ||
-				book.features ||
-				book.ageRange ||
-				book.difficulty ||
-				book.specsEn ||
-				book.featuresEn ||
-				book.ageRangeEn ||
-			book.difficultyEn) ? (
+		{book.specs ||
+			book.features ||
+			book.ageRange ||
+			book.difficulty ||
+			book.specsEn ||
+			book.featuresEn ||
+			book.ageRangeEn ||
+			book.difficultyEn ? (
 				<div className="border-t border-neutral-200 pt-5 text-sm">
 				<h2 className="font-semibold text-neutral-900 text-[15px] mb-4">
 				書籍情報 / Book Details
@@ -154,11 +162,15 @@ export default async function BookDetailPage({
 						)}
 						
 						{book.ageRange && (
-								<p className="text-neutral-700">対象年齢: {book.ageRange}</p>
+								<p className="text-neutral-700">
+								対象年齢: {book.ageRange}
+								</p>
 						)}
 						
 						{book.difficulty && (
-								<p className="text-neutral-700">難易度: {book.difficulty}</p>
+								<p className="text-neutral-700">
+								難易度: {book.difficulty}
+								</p>
 						)}
 						
 						{book.features && (
@@ -223,7 +235,9 @@ export default async function BookDetailPage({
 		{/* Sample Pages（内容見本） */}
 		{book.sampleImages && book.sampleImages.length > 0 && (
 				<section className="mt-6">
-				<h2 className="text-xl font-semibold mb-5">内容見本 / Sample Pages</h2>
+				<h2 className="text-xl font-semibold mb-5">
+				内容見本 / Sample Pages
+				</h2>
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 				{book.sampleImages.map((src, i) => (
 							<div
@@ -237,6 +251,50 @@ export default async function BookDetailPage({
 							className="object-contain"
 							/>
 							</div>
+				))}
+				</div>
+				</section>
+		)}
+		
+		{/* 関連書籍セクション */}
+		{relatedBooks.length > 0 && (
+				<section className="mt-10">
+				<h2 className="text-xl font-semibold mb-4">
+				関連書籍 / Related Books
+				</h2>
+				
+				<div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1">
+				{relatedBooks.map((rb) => (
+							<Link
+							key={rb.id}
+							href={`/books/${rb.id}`}
+							className="group min-w-[180px] max-w-[200px] shrink-0 rounded-xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition"
+							>
+							<div className="relative w-full aspect-[3/4] rounded-t-xl overflow-hidden bg-neutral-100">
+							{rb.coverSrc && (
+									<Image
+									src={rb.coverSrc}
+									alt={rb.titleJa || rb.title}
+									fill
+									className="object-contain group-hover:scale-[1.03] transition-transform duration-500"
+									/>
+							)}
+							</div>
+							<div className="p-3">
+							<p className="text-[11px] text-neutral-500">
+							{rb.category === "picture-book"
+								? "絵本 / Picture Book"
+								: rb.category === "coloring"
+								? "塗り絵 / Coloring Book"
+								: rb.category === "photo"
+								? "写真集 / Photo Book"
+							: "書籍 / Book"}
+							</p>
+							<p className="mt-1 text-sm font-semibold text-neutral-900 line-clamp-2">
+							{rb.titleJa || rb.title}
+							</p>
+							</div>
+							</Link>
 				))}
 				</div>
 				</section>
