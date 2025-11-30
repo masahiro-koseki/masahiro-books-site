@@ -40,6 +40,7 @@ export default async function BookDetailPage({
 	.slice(0, 6);
 	
 	return (
+		<div className="max-w-5xl mx-auto px-4 py-10 md:py-14">
 		{/* 戻るリンク（上） */}
 		<div className="mb-6">
 		<Link
