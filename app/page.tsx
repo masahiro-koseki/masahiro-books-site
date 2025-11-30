@@ -485,7 +485,14 @@ export default function Page() {
 								<Link
 								key={book.id}
 								href={`/books/${book.id}`}
-								className="flex items-center gap-4 rounded-xl bg-white/90 px-3 py-3 hover:bg-white shadow-sm hover:shadow-md transition-all duration-300"
+								className="
+								group
+								flex items-center gap-4
+								rounded-xl bg-white/90 px-3 py-3
+								shadow-sm
+								transition-all duration-300
+								hover:bg-white hover:shadow-lg hover:-translate-y-1
+								"
 								>
 								{/* カバー */}
 								{book.coverSrc && (
