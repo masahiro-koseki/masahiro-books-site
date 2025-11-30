@@ -248,7 +248,7 @@ export default async function BookDetailPage({
 							src={src}
 							alt={`${book.title} sample ${i + 1}`}
 							fill
-							className="object-contain"
+							className="object-cover"
 							/>
 							</div>
 				))}
