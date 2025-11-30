@@ -20,6 +20,12 @@ import Image from "next/image";
 import BooksSection from "@/components/BooksSection";
 import { BOOKS } from "@/data/books";
 
+// ▼ 全書籍を新 → 旧 でソート
+const SORTED_BOOKS = [...BOOKS].sort((a, b) => {
+		const da = new Date(a.published || "1970-01-01").getTime();
+		const db = new Date(b.published || "1970-01-01").getTime();
+		return db - da;
+});
 
 // --- Amazon Links ---
 const AMAZON_JP = "https://www.amazon.co.jp/dp/B0G1CNPJ1L";
@@ -452,44 +458,39 @@ export default function Page() {
 		{/* ▼ タブごとの表示内容 */}
 		{selectedCategory === "all" && (
 				<div className="mt-6 space-y-10">
-				{/* 絵本：2冊だけプレビュー */}
-				{pictureBooks.length > 0 && (
-						<section>
-						<h3 className="text-lg font-semibold mb-3">
-						絵本 / Picture Books
-						</h3>
-						<BooksSection
-						books={pictureBooks.slice(0, 2)}
-						lang={lang}
-						/>
-						</section>
-				)}
 				
-				{/* 塗り絵：2冊だけプレビュー */}
-				{coloringBooks.length > 0 && (
-						<section>
-						<h3 className="text-lg font-semibold mb-3">
-						塗り絵 / Coloring Books
-						</h3>
-						<BooksSection
-						books={coloringBooks.slice(0, 2)}
-						lang={lang}
-						/>
-						</section>
-				)}
+				{/* 絵本 */}
+				<section>
+				<h3 className="text-lg font-semibold mb-3">
+				絵本 / Picture Books
+				</h3>
+				<BooksSection
+				books={SORTED_BOOKS.filter((b) => b.category === "picture-book").slice(0, 2)}
+				lang={lang}
+				/>
+				</section>
 				
-				{/* 写真集：2冊だけプレビュー */}
-				{photoBooks.length > 0 && (
-						<section>
-						<h3 className="text-lg font-semibold mb-3">
-						写真集 / Photo Books
-						</h3>
-						<BooksSection
-						books={photoBooks.slice(0, 2)}
-						lang={lang}
-						/>
-						</section>
-				)}
+				{/* 塗り絵 */}
+				<section>
+				<h3 className="text-lg font-semibold mb-3">
+				塗り絵 / Coloring Books
+				</h3>
+				<BooksSection
+				books={SORTED_BOOKS.filter((b) => b.category === "coloring").slice(0, 2)}
+				lang={lang}
+				/>
+				</section>
+				
+				{/* 写真集 */}
+				<section>
+				<h3 className="text-lg font-semibold mb-3">
+				写真集 / Photo Books
+				</h3>
+				<BooksSection
+				books={SORTED_BOOKS.filter((b) => b.category === "photo").slice(0, 2)}
+				lang={lang}
+				/>
+				</section>
 				</div>
 		)}
 		
