@@ -62,9 +62,10 @@ const H2 = ({ children }: { children: React.ReactNode }) => (
 export default function Page() {
 	const [lang, setLang] = useState<Lang>("ja");
 	
-	const pictureBooks = BOOKS.filter((b) => b.category === "picture-book");
-	const coloringBooks = BOOKS.filter((b) => b.category === "coloring");
-	const photoBooks = BOOKS.filter((b) => b.category === "photo");
+	// ▼ カテゴリ別配列もソート済みから作る
+	const pictureBooks = SORTED_BOOKS.filter((b) => b.category === "picture-book");
+	const coloringBooks = SORTED_BOOKS.filter((b) => b.category === "coloring");
+	const photoBooks    = SORTED_BOOKS.filter((b) => b.category === "photo");
 	
 	// コンポーネント内（Page 関数の中）で:
 	const [selectedCategory, setSelectedCategory] = useState<
