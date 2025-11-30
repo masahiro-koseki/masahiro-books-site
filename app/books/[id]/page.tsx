@@ -256,7 +256,15 @@ export default async function BookDetailPage({
 				{book.sampleImages.map((src, i) => (
 							<div
 							key={src}
-							className="relative w-full aspect-[3/2] rounded-xl overflow-hidden border border-neutral-200 bg-white shadow-sm hover:shadow-md transition"
+							className="
+							group
+							relative w-full aspect-[3/2]
+							rounded-xl overflow-hidden
+							border border-neutral-200 bg-white
+							shadow-sm
+							transition-all duration-300
+							hover:shadow-lg hover:-translate-y-1
+							"
 							>
 							<Image
 							src={src}
