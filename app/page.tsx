@@ -576,7 +576,11 @@ export default function Page() {
 					return (
 						<button
 						key={cat.key}
-						onClick={() => setSelectedCategory(cat.key)}
+						onClick={() =>
+							setSelectedCategory(
+								cat.key as "all" | "picture" | "coloring" | "photo"
+							)
+						}
 						className={
 							"flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs sm:text-sm transition-all " +
 							(active
