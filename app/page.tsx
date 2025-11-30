@@ -406,16 +406,30 @@ export default function Page() {
 		
 		{/* 今月のおすすめ書籍 */}
 		{FEATURED_BOOKS.length > 0 && (
-				<section className="mt-2 rounded-2xl border border-amber-100 bg-amber-50/40 px-4 py-4">
-				<div className="flex items-center gap-2 text-sm font-medium text-amber-900">
+				<section className="mt-2 rounded-2xl border border-amber-50 bg-amber-50/40 px-4 py-4">
+				<div className="flex items-center gap-3 text-sm font-medium text-amber-900">
+				{/* 小さなオコジョアイコン */}
+				<div className="relative h-7 w-7 hidden sm:block">
+				<Image
+				src="/okojo-logo.png"
+				alt="Okojo logo"
+				fill
+				className="object-contain"
+				/>
+				</div>
+				
+				<div className="flex flex-col gap-1">
+				<div className="flex items-center gap-2">
 				<span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-500 text-white">
 				{lang === "ja" ? "今月のおすすめ" : "Featured this month"}
 				</span>
+				</div>
 				<span className="text-xs sm:text-sm text-amber-900/90">
 				{lang === "ja"
 					? "新刊やとくにおすすめしたい本をピックアップしました。"
 				: "A small selection of books we especially recommend right now."}
 				</span>
+				</div>
 				</div>
 				
 				<div className="mt-4 grid gap-4 md:grid-cols-2">
