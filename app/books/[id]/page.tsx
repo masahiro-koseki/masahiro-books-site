@@ -40,14 +40,27 @@ export default async function BookDetailPage({
 	.slice(0, 6);
 	
 	return (
-		<div className="max-w-5xl mx-auto px-4 py-10 md:py-14">
-		{/* 戻るリンク */}
+		{/* 戻るリンク（上） */}
 		<div className="mb-6">
 		<Link
 		href="/"
-		className="inline-flex items-center text-sm text-neutral-500 hover:text-neutral-800 transition"
+		className="inline-flex items-center gap-3 text-sm text-neutral-600 hover:text-neutral-900"
 		>
-		← <span className="ml-1">書籍一覧へ戻る</span>
+		<div className="relative h-6 w-6">
+		<Image
+		src="/okojo-logo.png"
+		alt="Okojo logo"
+		fill
+		className="object-contain"
+		/>
+		</div>
+		
+		<span className="leading-tight">
+		← 書籍一覧へ戻る
+		<span className="block text-xs text-neutral-500">
+		← Back to book list
+		</span>
+		</span>
 		</Link>
 		</div>
 		
@@ -308,12 +321,13 @@ export default async function BookDetailPage({
 				</section>
 		)}
 		
-		<section className="mt-10 pt-6 border-t border-neutral-200">
+		{/* 戻るリンク：書籍一覧へ（センター寄せ） */}
+		<section className="mt-10 pt-6 border-t border-neutral-200 text-center">
 		<Link
 		href="/"
-		className="inline-flex items-center gap-3 text-sm text-neutral-700 hover:text-neutral-900"
+		className="inline-flex items-center gap-3 text-neutral-700 hover:text-neutral-900"
 		>
-		<div className="relative h-8 w-8">
+		<div className="relative h-8 w-8 mx-auto">
 		<Image
 		src="/okojo-logo.png"
 		alt="Okojo logo"
@@ -321,7 +335,8 @@ export default async function BookDetailPage({
 		className="object-contain"
 		/>
 		</div>
-		<div className="flex flex-col leading-tight">
+		
+		<div className="flex flex-col leading-tight text-left">
 		<span>← 書籍一覧へ戻る</span>
 		<span className="text-xs text-neutral-500">
 		← Back to book list
@@ -329,6 +344,7 @@ export default async function BookDetailPage({
 		</div>
 		</Link>
 		</section>
+		
 		</div>
 	);
 }
