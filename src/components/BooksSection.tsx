@@ -19,13 +19,20 @@ function truncate(text: string, max: number) {
 export default function BooksSection({ books, lang }: BooksSectionProps) {
 	if (!books || books.length === 0) return null;
 	
-	// ▼ フェードインアニメーション（遅延あり）
+	// ▼ 新 → 旧 の順にソート
+	const sortedBooks = [...books].sort((a, b) => {
+			const da = new Date(a.published || "1970-01-01").getTime();
+			const db = new Date(b.published || "1970-01-01").getTime();
+			return db - da;
+	});
+	
+	// マウント時アニメーション
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => setMounted(true), []);
 	
 	return (
 		<div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-		{books.map((book, index) => {
+		{sortedBooks.map((book, index) => {
 					// ▼ タイトル（日本語 / 英語）
 					const mainTitle =
 					lang === "ja"
