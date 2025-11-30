@@ -258,29 +258,36 @@ export default async function BookDetailPage({
 		
 		{/* 関連書籍セクション */}
 		{relatedBooks.length > 0 && (
-				<section className="mt-10">
-				<h2 className="text-xl font-semibold mb-4">
+				<section className="mt-12">
+				<h2 className="text-xl font-semibold mb-4 text-center">
 				関連書籍 / Related Books
 				</h2>
 				
-				<div className="flex gap-4 overflow-x-auto pb-2 -mx-1 px-1">
+				{/* センター寄せの横スクロール */}
+				<div className="flex justify-center">
+				<div className="flex gap-4 overflow-x-auto pb-2 px-2 max-w-full">
 				{relatedBooks.map((rb) => (
 							<Link
 							key={rb.id}
 							href={`/books/${rb.id}`}
-							className="group min-w-[180px] max-w-[200px] shrink-0 rounded-xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition"
+							className="group min-w-[150px] max-w-[150px] shrink-0 
+							rounded-xl border border-neutral-200 bg-white
+							shadow-sm hover:shadow-md transition"
 							>
+							{/* 画像サイズを小さく */}
 							<div className="relative w-full aspect-[3/4] rounded-t-xl overflow-hidden bg-neutral-100">
 							{rb.coverSrc && (
 									<Image
 									src={rb.coverSrc}
 									alt={rb.titleJa || rb.title}
 									fill
-									className="object-contain group-hover:scale-[1.03] transition-transform duration-500"
+									className="object-contain group-hover:scale-[1.02] transition-transform duration-500 p-1"
 									/>
 							)}
 							</div>
-							<div className="p-3">
+							
+							{/* タイトル */}
+							<div className="p-2">
 							<p className="text-[11px] text-neutral-500">
 							{rb.category === "picture-book"
 								? "絵本 / Picture Book"
@@ -290,12 +297,13 @@ export default async function BookDetailPage({
 								? "写真集 / Photo Book"
 							: "書籍 / Book"}
 							</p>
-							<p className="mt-1 text-sm font-semibold text-neutral-900 line-clamp-2">
+							<p className="mt-1 text-xs font-semibold text-neutral-900 line-clamp-2">
 							{rb.titleJa || rb.title}
 							</p>
 							</div>
 							</Link>
 				))}
+				</div>
 				</div>
 				</section>
 		)}
