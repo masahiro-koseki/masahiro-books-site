@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Book } from "@/data/books";
 import { useEffect, useState } from "react";
+import { event } from "@/lib/gtag";
 
 type BooksSectionProps = {
 	books: Book[];
@@ -104,6 +105,15 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 								target="_blank"
 								rel="noopener noreferrer"
 								className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+								onClick={() =>
+									event("amazon_click", {
+											site: "books",
+											lang,
+											marketplace: "jp",
+											asin: book.asinJp,          // あれば
+											link_url: book.amazonJp,
+									})
+								}
 								>
 								Amazon.co.jp
 								</a>
@@ -115,6 +125,15 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 								target="_blank"
 								rel="noopener noreferrer"
 								className="px-3 py-1 rounded-full border border-neutral-300 hover:bg-neutral-100 transition"
+								onClick={() =>
+									event("amazon_click", {
+											site: "books",
+											lang,
+											marketplace: "com",
+											asin: book.asinEn,          // あれば
+											link_url: book.amazonEn,
+									})
+								}
 								>
 								Amazon.com
 								</a>
