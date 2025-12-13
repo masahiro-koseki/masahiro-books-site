@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
+import Analytics from "@/components/Analytics";
+import { GA_ID } from "@/lib/gtag";
 
 const GA_ID = "G-B3W4BL798N";
 
@@ -47,12 +49,12 @@ export default function RootLayout({
 			{`
 				window.dataLayer = window.dataLayer || [];
 				function gtag(){dataLayer.push(arguments);}
+				window.gtag = gtag;
 				gtag('js', new Date());
-				gtag('config', '${GA_ID}', {
-						page_path: window.location.pathname,
-				});
+				gtag('config', '${GA_ID}');
 			`}
 			</Script>
+			
 			{children}
 			</body>
 			</html>
