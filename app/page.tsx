@@ -18,6 +18,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { event } from "@/lib/gtag";
 import Analytics from "@/components/Analytics";
+import { Suspense } from "react";
+
 
 import BooksSection from "@/components/BooksSection";
 import { BOOKS } from "@/data/books";
@@ -299,7 +301,9 @@ export default function Page() {
 	
 	return (
 		<div className="min-h-screen bg-white text-neutral-900">
+		<Suspense fallback={null}>
 		<Analytics site="books" lang={lang} />
+		</Suspense>
 		<header className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b">
 		<div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
 		
