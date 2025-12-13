@@ -10,8 +10,12 @@ type HeroTexts = {
 	cta1: string;
 };
 
+type Lang = "ja" | "en";
+
 type HeroSectionProps = {
-	texts?: HeroTexts; // 念のため optional
+	texts?: HeroTexts;
+	lang: Lang;
+	changeLang: (l: Lang) => void;
 };
 
 const FALLBACK_TEXTS: HeroTexts = {
@@ -21,7 +25,7 @@ const FALLBACK_TEXTS: HeroTexts = {
 	cta1: "",
 };
 
-export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps) {
+export default function HeroSection({texts = FALLBACK_TEXTS, lang, changeLang,}: HeroSectionProps) {
 	// --- スライドショー ---
 	const sliderImages = [
 	"/covers/hero-slide-image-1.jpg",
@@ -54,6 +58,32 @@ export default function HeroSection({ texts = FALLBACK_TEXTS }: HeroSectionProps
 		<div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 md:items-center px-4">
 		{/* ▼ 左側：タイトル・文章・ボタン */}
 		<div className="text-left space-y-4">
+		{/* ✅ Mobile language switch (Hero top) */}
+		<div className="flex gap-2 md:hidden">
+		<button
+		type="button"
+		onClick={() => changeLang("ja")}
+		className={`px-3 py-1 rounded-full text-xs border ${
+				lang === "ja"
+				? "bg-neutral-900 text-white border-neutral-900"
+				: "bg-white text-neutral-700 border-neutral-300"
+		}`}
+		>
+		JP
+		</button>
+		<button
+		type="button"
+		onClick={() => changeLang("en")}
+		className={`px-3 py-1 rounded-full text-xs border ${
+				lang === "en"
+				? "bg-neutral-900 text-white border-neutral-900"
+				: "bg-white text-neutral-700 border-neutral-300"
+		}`}
+		>
+		EN
+		</button>
+		</div>
+
 		<h1 className="text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">
 		{t.title}
 		</h1>

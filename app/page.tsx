@@ -409,7 +409,7 @@ export default function Page() {
 		</header>
 		
 		<Section id="home" className="w-full pt-8 pb-0">
-		<HeroSection texts={t.hero}  />
+		<HeroSection texts={t.hero} lang={lang} changeLang={changeLang} />
 		</Section>
 		
 		{/* ---- BOOKS (All Works) ---- */}
