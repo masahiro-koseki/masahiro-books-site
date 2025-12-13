@@ -110,7 +110,6 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 											site: "books",
 											lang,
 											marketplace: "jp",
-											asin: book.asinJp,          // あれば
 											link_url: book.amazonJp,
 									})
 								}
@@ -130,7 +129,6 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 											site: "books",
 											lang,
 											marketplace: "com",
-											asin: book.asinEn,          // あれば
 											link_url: book.amazonEn,
 									})
 								}
