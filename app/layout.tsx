@@ -6,8 +6,6 @@ import Script from "next/script";
 import Analytics from "@/components/Analytics";
 import { GA_ID } from "@/lib/gtag";
 
-const GA_ID = "G-B3W4BL798N";
-
 export const metadata: Metadata = {
 	metadataBase: new URL("https://masahiro-koseki.com"),
 	
