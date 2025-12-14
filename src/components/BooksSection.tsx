@@ -111,6 +111,11 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 											lang,
 											marketplace: "jp",
 											link_url: book.amazonJp,
+											
+											// ★ 追加
+											work_id: book.id,
+											work_title_en: lang === "en" ? book.title : undefined,
+											work_title_ja: book.titleJa ?? (lang === "ja" ? book.title : undefined),
 									})
 								}
 								>
@@ -130,6 +135,11 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 											lang,
 											marketplace: "com",
 											link_url: book.amazonEn,
+											
+											// ★ 追加
+											work_id: book.id,
+											work_title_en: lang === "en" ? book.title : undefined,
+											work_title_ja: book.titleJa ?? (lang === "ja" ? book.title : undefined),
 									})
 								}
 								>
