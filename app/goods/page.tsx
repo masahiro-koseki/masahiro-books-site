@@ -64,6 +64,28 @@ export default function GoodsPage() {
 		<GoodsHero lang={lang} />
 		<GoodsCategoryGrid lang={lang} />
 		<GoodsFinalCTA lang={lang} />
+		
+		<section className="mt-10 pt-6 border-t border-neutral-200">
+		<Link
+		href="/"
+		className="inline-flex items-center gap-3 text-sm text-neutral-700 hover:text-neutral-900"
+		>
+		<div className="relative h-10 w-10">
+		<Image
+		src="/okojo-logo.png"
+		alt="Okojo logo"
+		fill
+		className="object-contain"
+		/>
+		</div>
+		
+		<div className="leading-tight">
+		<div>← 書籍一覧へ戻る</div>
+		<div className="text-xs text-neutral-500">← Back to book list</div>
+		</div>
+		</Link>
+		</section>
+		
 		</div>
 		</main>
 	);
