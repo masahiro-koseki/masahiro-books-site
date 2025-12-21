@@ -9,7 +9,7 @@ export default function GoodsCategoryGrid({ lang }: { lang: Lang }) {
 		<section className="mt-12">
 		<h2 className="text-xl font-semibold">{t.categoriesTitle}</h2>
 		
-		<div className="mt-4 grid gap-6 md:grid-cols-2">
+		<div className="mt-4 grid gap-6 md:grid-cols-3">
 		{CATEGORIES.map((c) => (
 					<div key={c.key} className="rounded-2xl border border-neutral-200 overflow-hidden bg-white">
 					{/* 画像 */}
