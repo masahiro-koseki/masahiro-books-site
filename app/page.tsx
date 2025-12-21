@@ -123,6 +123,15 @@ export default function Page() {
 		
 	const NEWS_ITEMS = [
 	{
+		date: "2025-12-21",
+		title_ja: "オコジョの関連グッズ紹介ページを公開",
+		title_en: "Okojo Goods Page Launched",
+		body_ja:
+		"絵本の世界から生まれたオコジョのステッカーやマグカップ、グリーティングカードなどをまとめて紹介する関連グッズページを公開しました。作品の余韻を日常の中でも楽しんでいただけます。",
+		body_en:
+		"A new goods page has been launched, featuring Okojo stickers, mugs, greeting cards, and other small items inspired by the picture-book world. These items are designed to bring a touch of the story into everyday life."
+	},
+	{
 		date: "2025-11-28",
 		title_ja: "Websiteを全面リニューアル",
 		title_en: "Website Fully Updated",
