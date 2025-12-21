@@ -53,7 +53,7 @@ export const CATEGORIES = [
 		en: "Bring a hint of mountain adventure to your mornings.",
 	},
 	links: {
-		etsy: "https://www.etsy.com/...", // TODO
+		/*etsy: "https://www.etsy.com/...",*/ // TODO
 		zazzle: "https://www.zazzle.com/adventure_okojo_mug_cute_hiking_stoat_illustrati-256604942897746117", // TODO
 	},
 },
