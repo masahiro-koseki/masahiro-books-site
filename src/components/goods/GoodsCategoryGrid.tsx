@@ -1,3 +1,4 @@
+import Image from "next/image";
 import TrackedOutboundLink from "@/components/TrackedOutboundLink";
 import { CATEGORIES, GOODS_T, Lang } from "@/data/goods";
 
@@ -10,7 +11,22 @@ export default function GoodsCategoryGrid({ lang }: { lang: Lang }) {
 		
 		<div className="mt-4 grid gap-6 md:grid-cols-2">
 		{CATEGORIES.map((c) => (
-					<div key={c.key} className="rounded-2xl border border-neutral-200 p-5">
+					<div key={c.key} className="rounded-2xl border border-neutral-200 overflow-hidden bg-white">
+					{/* 画像 */}
+					{("img" in c && c.img) && (
+							<div className="relative aspect-[16/9] w-full bg-neutral-100">
+							<Image
+							src={c.img}
+							alt={c.title[lang]}
+							fill
+							className="object-cover"
+							sizes="(max-width: 768px) 100vw, 50vw"
+							/>
+							</div>
+					)}
+					
+					{/* テキスト */}
+					<div className="p-5">
 					<div className="text-lg font-semibold">{c.title[lang]}</div>
 					<p className="mt-2 text-sm text-neutral-600">{c.desc[lang]}</p>
 					
@@ -36,6 +52,7 @@ export default function GoodsCategoryGrid({ lang }: { lang: Lang }) {
 					>
 					{lang === "ja" ? "Zazzleで見る" : "View on Zazzle"}
 					</TrackedOutboundLink>
+					</div>
 					</div>
 					</div>
 		))}

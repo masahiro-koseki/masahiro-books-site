@@ -36,6 +36,7 @@ export const CATEGORIES = [
 {
 	key: "stickers",
 	title: { ja: "ステッカー", en: "Stickers" },
+	img: "/goods/stickers.jpg",
 	desc: {
 		ja: "ノートやPCに貼れる、オコジョの小さな相棒。",
 		en: "A tiny Okojo companion for notebooks and laptops.",
@@ -48,6 +49,7 @@ export const CATEGORIES = [
 {
 	key: "mugs",
 	title: { ja: "マグカップ", en: "Mugs" },
+	img: "/goods/mugs.jpg",
 	desc: {
 		ja: "朝の一杯に、山の冒険を。",
 		en: "Bring a hint of mountain adventure to your mornings.",
