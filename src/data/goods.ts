@@ -59,4 +59,18 @@ export const CATEGORIES = [
 		zazzle: "https://www.zazzle.com/adventure_okojo_mug_cute_hiking_stoat_illustrati-256604942897746117", // TODO
 	},
 },
+{
+	key: "cards",
+	img: "/goods/cards.jpg",
+	title: { ja: "グリーティングカード", en: "Greeting Cards" },
+	desc: {
+		ja: "一言メッセージに、オコジョの冒険を添えて。",
+		en: "Send a little Okojo adventure with your message.",
+	},
+	links: {
+		etsy: "https://www.etsy.com/shop/OkojoArtStudio",   // TODO: カードのリンク
+		zazzle: "https://www.zazzle.com/okojo_adventure_greeting_card_cute_kawaii_japane-256116204314103867", // TODO: カードのリンク
+	},
+},
+
 ] as const;

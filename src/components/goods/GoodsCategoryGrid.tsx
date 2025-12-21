@@ -14,12 +14,12 @@ export default function GoodsCategoryGrid({ lang }: { lang: Lang }) {
 					<div key={c.key} className="rounded-2xl border border-neutral-200 overflow-hidden bg-white">
 					{/* 画像 */}
 					{("img" in c && c.img) && (
-							<div className="relative aspect-[16/9] w-full bg-neutral-100">
+							<div className="relative aspect-[16/9] w-full bg-neutral-50">
 							<Image
 							src={c.img}
 							alt={c.title[lang]}
 							fill
-							className="object-cover"
+							className="object-contain p-6"
 							sizes="(max-width: 768px) 100vw, 50vw"
 							/>
 							</div>
