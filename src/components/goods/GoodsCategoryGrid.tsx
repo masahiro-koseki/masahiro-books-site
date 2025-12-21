@@ -1,6 +1,7 @@
 import Image from "next/image";
 import TrackedOutboundLink from "@/components/TrackedOutboundLink";
 import { CATEGORIES, GOODS_T, Lang } from "@/data/goods";
+import { CARD_HOVER } from "@/lib/cardHover";
 
 export default function GoodsCategoryGrid({ lang }: { lang: Lang }) {
 	const t = GOODS_T[lang];
@@ -11,7 +12,10 @@ export default function GoodsCategoryGrid({ lang }: { lang: Lang }) {
 		
 		<div className="mt-4 grid gap-6 md:grid-cols-3">
 		{CATEGORIES.map((c) => (
-					<div key={c.key} className="rounded-2xl border border-neutral-200 overflow-hidden bg-white">
+					<div
+					key={c.key}
+					className={`rounded-2xl border border-neutral-200 overflow-hidden bg-white ${CARD_HOVER}`}
+					>
 					{/* 画像 */}
 					{("img" in c && c.img) && (
 							<div className="relative aspect-[16/9] w-full bg-neutral-50">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Book } from "@/data/books";
 import { useEffect, useState } from "react";
 import { event } from "@/lib/gtag";
+import { CARD_HOVER } from "@/lib/cardHover";
 
 type BooksSectionProps = {
 	books: Book[];
@@ -70,9 +71,7 @@ export default function BooksSection({ books, lang }: BooksSectionProps) {
 							flex flex-col md:flex-row
 							h-full gap-6 rounded-2xl border border-neutral-200
 							bg-white p-4
-							shadow-sm
-							transition-all duration-300
-							hover:shadow-lg hover:-translate-y-1 hover:scale-[1.02]
+							${CARD_HOVER}
 							${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
 						`}
 						style={{ transitionDelay: `${index * 80}ms` }}
