@@ -33,5 +33,26 @@ export default function GoodsFinalCTA({ lang }: { lang: Lang }) {
 		</TrackedOutboundLink>
 		</div>
 		</section>
+		{/* 戻るリンク（下） */}
+		<section className="mt-10 pt-6 border-t border-neutral-200 text-center">
+		<Link
+		href="/"
+		className="inline-flex items-center gap-3 text-neutral-700 hover:text-neutral-900"
+		>
+		<div className="relative h-10 w-10 mx-auto">
+		<Image
+		src="/okojo-logo.png"
+		alt="Okojo logo"
+		fill
+		className="object-contain"
+		/>
+		</div>
+		
+		<div className="flex flex-col leading-tight text-left">
+		<span>← 書籍一覧へ戻る</span>
+		<span className="text-xs text-neutral-500">← Back to book list</span>
+		</div>
+		</Link>
+		</section>
 	);
 }
