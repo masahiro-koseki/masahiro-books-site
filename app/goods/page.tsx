@@ -34,7 +34,7 @@ export default function GoodsPage() {
 	}, []);
 	
 	return (
-		<main className="pt-6 min-h-screen bg-white text-neutral-900">
+		<main className="max-w-5xl mx-auto px-4 py-10 md:py-14">
 		<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
 		
 		{/* 戻るリンク（上） */}
@@ -65,12 +65,12 @@ export default function GoodsPage() {
 		<GoodsCategoryGrid lang={lang} />
 		<GoodsFinalCTA lang={lang} />
 		
-		<section className="mt-10 pt-6 border-t border-neutral-200">
+		<section className="mt-10 pt-6 border-t border-neutral-200 text-center">
 		<Link
 		href="/"
 		className="inline-flex items-center gap-3 text-sm text-neutral-700 hover:text-neutral-900"
 		>
-		<div className="relative h-10 w-10">
+		<div className="relative h-10 w-10 mx-auto">
 		<Image
 		src="/okojo-logo.png"
 		alt="Okojo logo"
