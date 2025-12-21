@@ -41,8 +41,8 @@ export const CATEGORIES = [
 		en: "A tiny Okojo companion for notebooks and laptops.",
 	},
 	links: {
-		etsy: "https://www.etsy.com/...", // TODO
-		zazzle: "https://www.zazzle.com/...", // TODO
+		etsy: "https://www.etsy.com/shop/OkojoArtStudio", // TODO
+		zazzle: "https://www.zazzle.com/cute_hiking_okojo_sticker_japanese_stoat_adventu-256859280041495373", // TODO
 	},
 },
 {
@@ -53,8 +53,8 @@ export const CATEGORIES = [
 		en: "Bring a hint of mountain adventure to your mornings.",
 	},
 	links: {
-		etsy: "https://www.etsy.com/...", // TODO
-		zazzle: "https://www.zazzle.com/...", // TODO
+		//etsy: "https://www.etsy.com/...", // TODO
+		zazzle: "https://www.zazzle.com/adventure_okojo_mug_cute_hiking_stoat_illustrati-256604942897746117", // TODO
 	},
 },
 ] as const;
