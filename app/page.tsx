@@ -321,6 +321,12 @@ export default function Page() {
 		<button onClick={() => scrollTo("book")} className="hover:opacity-70">
 		{t.nav.book}
 		</button>
+		<a
+		href={`/goods?lang=${lang}`}
+		className="hover:opacity-70"
+		>
+		{lang === "ja" ? "グッズ" : "Goods"}
+		</a>
 		<button onClick={() => scrollTo("about")} className="hover:opacity-70">
 		{t.nav.about}
 		</button>
@@ -361,44 +367,79 @@ export default function Page() {
 		{/* --- モバイルメニュー本体 --- */}
 		{menuOpen && (
 				<nav className="md:hidden border-t border-neutral-300 bg-white text-sm">
-				<button className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
-				onClick={() => scrollTo("home")}
+				<button
+				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				onClick={() => {
+						scrollTo("home");
+						setMenuOpen(false);
+				}}
 				>
 				{t.nav.home}
 				</button>
 				
-				<button className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
-				onClick={() => scrollTo("book")}
+				<button
+				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				onClick={() => {
+						scrollTo("book");
+						setMenuOpen(false);
+				}}
 				>
 				{t.nav.book}
 				</button>
 				
-				<button className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
-				onClick={() => scrollTo("about")}
+				{/* ★ Goods */}
+				<a
+				href={`/goods?lang=${lang}`}
+				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				onClick={() => setMenuOpen(false)}
+				>
+				{lang === "ja" ? "グッズ" : "Goods"}
+				</a>
+				
+				<button
+				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				onClick={() => {
+						scrollTo("about");
+						setMenuOpen(false);
+				}}
 				>
 				{t.nav.about}
 				</button>
 				
-				<button className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
-				onClick={() => scrollTo("news")}
+				<button
+				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				onClick={() => {
+						scrollTo("news");
+						setMenuOpen(false);
+				}}
 				>
 				{t.nav.news}
 				</button>
 				
-				<button className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
-				onClick={() => scrollTo("contact")}
+				<button
+				className="block px-4 py-3 w-full text-left hover:bg-neutral-100"
+				onClick={() => {
+						scrollTo("contact");
+						setMenuOpen(false);
+				}}
 				>
 				{t.nav.contact}
 				</button>
 				
 				{/* 言語切替 */}
 				<div className="border-t border-neutral-200 flex gap-2 px-4 py-3">
-				<button className={`px-3 py-1 rounded-full ${lang === "ja" ? "bg-neutral-900 text-white" : "bg-neutral-200"}`}
+				<button
+				className={`px-3 py-1 rounded-full ${
+						lang === "ja" ? "bg-neutral-900 text-white" : "bg-neutral-200"
+				}`}
 				onClick={() => changeLang("ja")}
 				>
 				JP
 				</button>
-				<button className={`px-3 py-1 rounded-full ${lang === "en" ? "bg-neutral-900 text-white" : "bg-neutral-200"}`}
+				<button
+				className={`px-3 py-1 rounded-full ${
+						lang === "en" ? "bg-neutral-900 text-white" : "bg-neutral-200"
+				}`}
 				onClick={() => changeLang("en")}
 				>
 				EN
@@ -406,6 +447,7 @@ export default function Page() {
 				</div>
 				</nav>
 		)}
+
 		</header>
 		
 		<Section id="home" className="w-full pt-8 pb-0">
