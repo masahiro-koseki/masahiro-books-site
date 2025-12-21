@@ -19,11 +19,16 @@ function getCategoryMeta(category: Book["category"]) {
 	}
 }
 
+type Lang = "ja" | "en";
+
 export default async function BookDetailPage({
 		params,
+		searchParams,
 	}: {
 		params: Promise<{ id: string }>;
+		searchParams?: { lang?: string };
 }) {
+	const lang: Lang = searchParams?.lang === "en" ? "en" : "ja";
 	const { id } = await params;
 	
 	const book = BOOKS.find((b) => b.id === id);
@@ -289,6 +294,24 @@ export default async function BookDetailPage({
 				</section>
 		)}
 		
+		{/* グッズ導線：1行リンク */}
+		<section className="mt-10 text-center">
+		<p className="text-sm text-neutral-700">
+		{lang === "ja"
+			? "この絵本のオコジョは、ステッカーやマグカップにもなっています。"
+		: "The Okojo from this book is also available as stickers and mugs."}
+		</p>
+		
+		<Link
+		href={`/goods?lang=${lang}`}
+		className="inline-block mt-2 text-sm font-medium text-neutral-900 hover:underline"
+		>
+		{lang === "ja"
+			? "→ オコジョの関連グッズを見る"
+		: "→ View Okojo goods"}
+		</Link>
+		</section>
+
 		{/* 関連書籍セクション */}
 		{relatedBooks.length > 0 && (
 				<section className="mt-12">
@@ -344,7 +367,7 @@ export default async function BookDetailPage({
 		{/* 戻るリンク：書籍一覧へ（センター寄せ） */}
 		<section className="mt-10 pt-6 border-t border-neutral-200 text-center">
 		<Link
-		href="/"
+		href={`/?lang=${lang}#book`}
 		className="inline-flex items-center gap-3 text-neutral-700 hover:text-neutral-900"
 		>
 		<div className="relative h-10 w-10 mx-auto">
