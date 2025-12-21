@@ -34,7 +34,7 @@ export default function GoodsPage() {
 	}, []);
 	
 	return (
-		<main className="min-h-screen bg-white text-neutral-900">
+		<main className="pt-6 min-h-screen bg-white text-neutral-900">
 		<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
 		
 		{/* 戻るリンク（上） */}
