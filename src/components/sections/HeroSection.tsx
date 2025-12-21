@@ -92,6 +92,13 @@ export default function HeroSection({texts = FALLBACK_TEXTS, lang, changeLang,}:
 		{t.subtitle}
 		</p>
 		
+		{/* ★ 小さな一言（世界観強化） */}
+		<p className="text-sm text-neutral-500 italic">
+		{lang === "ja"
+			? "物語の続きを、日常の中へ。"
+		: "Bring the story into your everyday life."}
+		</p>
+		
 		<p
 		className="text-neutral-600 leading-relaxed"
 		dangerouslySetInnerHTML={{ __html: t.poem }}
